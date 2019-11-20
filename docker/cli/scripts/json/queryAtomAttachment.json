@@ -1,0 +1,21 @@
+{
+  "QueryFilter" :
+    {
+      "expression" : 
+        {
+          "operator" : "and",
+          "nestedExpression" : [
+            {
+              "argument" : ["${atomId}"],
+              "operator" :"EQUALS",
+              "property" :"atomId"
+            },
+            {
+              "argument" : ["${envId}"],
+              "operator" : "EQUALS",
+              "property" : "environmentId"
+						}
+            ]
+        }
+    }
+}
