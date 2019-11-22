@@ -62,7 +62,7 @@ function createJSON {
  		for i in "${ARGUMENTS[@]}"
   		do var=$var" -e \"s/\\\${${i}}/${!i}/\" ";
  		done
- 	var=$var" $JSON_FILE > "${WORKSPACE}"/tmp.json"
+ 	var=$var" $JSON_FILE > \"${WORKSPACE}\"/tmp.json"
  	eval $var
 }
 
@@ -80,7 +80,7 @@ function clean {
 function callAPI {
  
  #echo "curl -s -X POST -u $authToken -H \"${h1}\" -H \"${h2}\" $URL -d@tmp.json > out.json"
- curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d@$"{WORKSPACE}"/tmp.json > "${WORKSPACE}"/out.json
+ curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d@"${WORKSPACE}"/tmp.json > "${WORKSPACE}"/out.json
  if [ ! -z "$exportVariable" ]
  then
   	export ${exportVariable}=`jq -r .$id "${WORKSPACE}"/out.json`
