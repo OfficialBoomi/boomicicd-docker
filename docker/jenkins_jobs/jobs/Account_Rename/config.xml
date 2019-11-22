@@ -14,8 +14,14 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQ8b2l+afqDzYeS586lv842MKKPtGhGhUzMWfMlnhH4Zg=}</secret>
+              <secret>{AQAAABAAAAAQvnF0cI7CUvAlST+e5ulH0Y5Pg89A8tHsni7p8a+1pA0=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
+            <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
+              <id>git_id</id>
+              <description>Git username and password</description>
+              <username>user@company.com</username>
+              <password>{AQAAABAAAAAQwgBoVWli8sByvX7jtKr+i+4w0oILrAgDa7dfb6xWxLw=}</password>
+            </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
       </domainCredentialsMap>
@@ -41,6 +47,10 @@
         <com.mig82.folders.properties.StringProperty>
           <key>SCRIPTS_HOME</key>
           <value>/var/jenkins_home/cli/scripts</value>
+        </com.mig82.folders.properties.StringProperty>
+        <com.mig82.folders.properties.StringProperty>
+          <key>GIT_REPO</key>
+          <value>https://...git</value>
         </com.mig82.folders.properties.StringProperty>
       </properties>
     </com.mig82.folders.properties.FolderProperties>
@@ -99,6 +109,8 @@
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
           <string>Create Package</string>
           <string>Create Process Schedule</string>
+          <string>Deploy Local Package and Publish to GIT</string>
+          <string>Deploy Local Process and Publish to GIT</string>
           <string>Deploy Package</string>
           <string>Deploy Process (Legacy Deployment)</string>
           <string>Promote Process</string>

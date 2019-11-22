@@ -74,6 +74,10 @@ echo $atomId</command>
             <key>SCRIPTS_HOME</key>
             <value>/var/jenkins_home/cli/scripts</value>
           </com.mig82.folders.properties.StringProperty>
+          <com.mig82.folders.properties.StringProperty>
+            <key>GIT_REPO</key>
+            <value>https://...git</value>
+          </com.mig82.folders.properties.StringProperty>
         </properties>
       </folderProperties>
     </com.mig82.folders.wrappers.ParentFolderBuildWrapper>

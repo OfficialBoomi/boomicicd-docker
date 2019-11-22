@@ -1,0 +1,105 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Creates a package from a process and deploys the package to a given envirnoment&#xd;
+If package with the same version exists, a new package is not created. If the packageID is deployed, the deployment step is ignored&#xd;
+&#xd;
+source bin/deployProcess.sh env=${env} processName=${processName} packageVersion=${packageVersion} createdBy=${createdBy} notes=${notes} listenerStatus=${listenerStatus}</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>env</name>
+          <description>Name of the Environment</description>
+          <defaultValue>#jenkins</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>processName</name>
+          <description>Name of the Process to be Packaged</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>notes</name>
+          <description>Notes </description>
+          <defaultValue>This package is ...</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.0.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>${GIT_REPO}</url>
+        <credentialsId>git_id</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd ${SCRIPTS_HOME}
+cd ${SCRIPTS_HOME}
+saveProcessName=${processName}
+source bin/queryProcess.sh processName=${processName}
+source bin/queryEnvironment.sh env=${env} classification=&quot;*&quot;
+toEnvId=$envId
+deployProcessId=$processId
+source bin/createProcessAttachment.sh envId=$envId processId=$processId componentType=&quot;Process&quot;
+source bin/deployProcess.sh processId=${deployProcessId} envId=${toEnvId} componentType=&quot;Process&quot; notes=&quot;${notes}&quot;
+mkdir -p &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
+cp /var/jenkins_home/boomi/Atom_jenkins01/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/${deployProcessId}.xml
+cd &quot;${WORKSPACE}/${BUILD_NUMBER}&quot;
+git add ${saveProcessName}
+git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
+
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.git.GitPublisher plugin="git@4.0.0">
+      <configVersion>2</configVersion>
+      <pushMerge>true</pushMerge>
+      <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
+      <forcePush>true</forcePush>
+      <tagsToPush>
+        <hudson.plugins.git.GitPublisher_-TagToPush>
+          <targetRepoName>origin</targetRepoName>
+          <tagName>${BUILD_NUMBER}</tagName>
+          <tagMessage>Deploying to ${BUILD_NUMBER} to origin from Jenkins</tagMessage>
+          <createTag>true</createTag>
+          <updateTag>false</updateTag>
+        </hudson.plugins.git.GitPublisher_-TagToPush>
+      </tagsToPush>
+    </hudson.plugins.git.GitPublisher>
+  </publishers>
+  <buildWrappers>
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+      <bindings>
+        <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
+          <credentialsId>authToken</credentialsId>
+          <variable>authToken</variable>
+        </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
+      </bindings>
+    </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+  </buildWrappers>
+</project>
