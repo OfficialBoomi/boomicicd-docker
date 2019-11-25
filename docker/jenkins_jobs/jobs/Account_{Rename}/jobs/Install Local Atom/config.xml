@@ -1,9 +1,9 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Deletes Local Atom &#xd;
+  <description>Install Local Atom &#xd;
 &#xd;
-Deletes Local Atom with name jenkins01 and deletes environment #jenkins&#xd;
+Creates Local Atom with name Jenkins01 and attaches to environment #jenkins&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -11,9 +11,9 @@ Deletes Local Atom with name jenkins01 and deletes environment #jenkins&#xd;
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
           <name>atomName</name>
-          <description>Name of the atom to delete</description>
+          <description>Name of the atom</description>
           <defaultValue>jenkins01</defaultValue>
-          <trim>true</trim>
+          <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -28,14 +28,28 @@ Deletes Local Atom with name jenkins01 and deletes environment #jenkins&#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-ATOM_HOME=/var/jenkins_home/boomi/Atom_$atomName
-${ATOM_HOME}/bin/atom stop
-sleep 30
-${ATOM_HOME}/uninstall
-sleep 30
-source bin/queryEnvironment.sh env=&quot;#jenkins&quot; classification=&quot;TEST&quot; 
-curl -s -X DELETE -u $authToken -H &quot;${h1}&quot; -H &quot;${h2}&quot;  $baseURL/Environment/$envId &gt; out.json
-</command>
+INSTALL_DIR=&quot;/var/jenkins_home/boomi&quot;
+ATOM_HOME=${INSTALL_DIR}/Atom_${atomName}
+
+source bin/installerToken.sh atomType=&quot;ATOM&quot;
+bin/installAtom.sh atomName=&quot;${atomName}&quot; tokenId=${tokenId} INSTALL_DIR=&quot;${INSTALL_DIR}&quot; 
+source bin/createEnvAndAttachRoleAndAtom.sh env=&quot;#jenkins&quot; classification=&quot;TEST&quot; atomName=${atomName} roleName=&quot;Administrator&quot; purgeHistoryDays=&quot;1&quot;
+
+${ATOM_HOME}/bin/atom stop &gt; /dev/null 2&gt;&amp;1 &amp;
+PID=$!
+kill -9 $PID  &gt; /dev/null 2&gt;&amp;1 &amp;
+
+
+cd ${ATOM_HOME}/message
+find . -regex &apos;.*[0-9a-fA-F]+-[0-9a-fA-F]+.-[0-9a-fA-f].*&apos; -type d | xargs rm -rf
+cd ${ATOM_HOME}/bin
+sed -e &apos;s/512/128/g&apos; atom.vmoptions &gt; atom.vmoptions_1
+mv atom.vmoptions_1 atom.vmoptions
+
+
+
+${ATOM_HOME}/bin/atom start
+${ATOM_HOME}/bin/atom status</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

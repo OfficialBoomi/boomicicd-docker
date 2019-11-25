@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 #RUN echo "" > /etc/apt/sources.list.d/jessie-backports.list
 #RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
 
-RUN apt-get update -y && apt-get install -y git curl jq openjdk-8-jdk && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y git curl jq openjdk-8-jdk tidy unzip && rm -rf /var/lib/apt/lists/*
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
@@ -20,6 +20,8 @@ ARG REF=/usr/share/jenkins/ref
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
 ENV REF $REF
+ENV GIT_CONFIG_NAME Admin
+ENV GIT_CONFIG_EMAIL admin@jenkins.org
 
 # Jenkins is run with user `jenkins`, uid = 1000
 # If you bind mount a volume from the host or a data container,
@@ -50,10 +52,11 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.190.2}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.190.3}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=47620a00004af5634e45904149897fe4a36b0463ec691bfabc2086779f90f127
+ARG JENKINS_SHA=79c2042b30ad71dc9cf17a5877f64eaed405fa03e24e002ca60f8db73b7ad490
+
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
@@ -67,6 +70,8 @@ RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
 ENV JENKINS_UC https://updates.jenkins.io
 ENV JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
 ENV JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+ENV JENKINS_CLI=${JENKINS_HOME}/war/WEB-INF/jenkins-cli.jar
+ENV JENKINS_URL="http://localhost:8080"
 RUN chown -R ${user}:${group} "$JENKINS_HOME" "$REF" 
 
 # for main web interface:
@@ -81,15 +86,25 @@ USER ${user}
 
 COPY cli $REF/cli
 COPY jenkins_jobs/jobs ${REF}/jobs
-
+COPY hudson.tasks.Shell.xml ${JENKINS_HOME}/hudson.tasks.Shell.xml
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY restart.sh /usr/local/bin/restart.sh
 COPY tini-shim.sh /bin/tini
-ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
+COPY hudson.plugins.git.GitSCM.xml_1 ${JENKINS_HOME}/hudson.plugins.git.GitSCM.xml_1
 
+#ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
+
+ENV JENKINS_USER admin
+ENV JENKINS_PASS admin
+COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/
+COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
+# Skip initial setup
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-
-
-
+RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow email-ext pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle pipeline-model-declarative-agent junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials mailer pipeline-input-step pipeline-graph-analysis durable-task github-branch-source ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project

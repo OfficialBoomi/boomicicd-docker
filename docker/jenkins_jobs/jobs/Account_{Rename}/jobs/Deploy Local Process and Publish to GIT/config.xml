@@ -27,6 +27,12 @@ source bin/deployProcess.sh env=${env} processName=${processName} packageVersion
           <defaultValue>This package is ...</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>atomName</name>
+          <description>Name of the atom</description>
+          <defaultValue>jenkins01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -34,7 +40,7 @@ source bin/deployProcess.sh env=${env} processName=${processName} packageVersion
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>${GIT_REPO}</url>
+        <url>https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git</url>
         <credentialsId>git_id</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
@@ -65,7 +71,9 @@ deployProcessId=$processId
 source bin/createProcessAttachment.sh envId=$envId processId=$processId componentType=&quot;Process&quot;
 source bin/deployProcess.sh processId=${deployProcessId} envId=${toEnvId} componentType=&quot;Process&quot; notes=&quot;${notes}&quot;
 mkdir -p &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
-cp /var/jenkins_home/boomi/Atom_jenkins01/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/${deployProcessId}.xml
+cp /var/jenkins_home/boomi/Atom_${atomName}/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/${deployProcessId}.xml
+tidy -m -i -xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/${deployProcessId}.xml
+
 cd &quot;${WORKSPACE}/${BUILD_NUMBER}&quot;
 git add ${saveProcessName}
 git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
@@ -100,6 +108,31 @@ git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0">
+      <folderProperties>
+        <properties>
+          <com.mig82.folders.properties.StringProperty>
+            <key>h1</key>
+            <value>Accept: application/json</value>
+          </com.mig82.folders.properties.StringProperty>
+          <com.mig82.folders.properties.StringProperty>
+            <key>h2</key>
+            <value>Content-Type: application/json</value>
+          </com.mig82.folders.properties.StringProperty>
+          <com.mig82.folders.properties.StringProperty>
+            <key>accountId</key>
+            <value>${accountId}</value>
+          </com.mig82.folders.properties.StringProperty>
+          <com.mig82.folders.properties.StringProperty>
+            <key>baseURL</key>
+            <value>https://api.boomi.com/api/rest/v1/$accountId</value>
+          </com.mig82.folders.properties.StringProperty>
+          <com.mig82.folders.properties.StringProperty>
+            <key>SCRIPTS_HOME</key>
+            <value>/var/jenkins_home/cli/scripts</value>
+          </com.mig82.folders.properties.StringProperty>
+        </properties>
+      </folderProperties>
+    </com.mig82.folders.wrappers.ParentFolderBuildWrapper>
   </buildWrappers>
 </project>
