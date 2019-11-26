@@ -2,7 +2,7 @@
 <com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.9">
   <actions/>
   <description>The Boomi CICD jobs for the above account</description>
-  <displayName>Account {Rename}</displayName>
+  <displayName>Account ${Rename}</displayName>
   <properties>
     <com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQ8v4SD7hJzg7KuQ7tqIodo79gu6PR561Ck32BI1z0eNk=}</secret>
+              <secret>{AQAAABAAAAAQYXa+AaCGZ4rYO5wQ8FQMhbP07ApZ4e+5s1CgIbByxZI=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAAQq9xC/YagmmK7ka9AOaWzDGvsaUjCnrMJi5y6Ijvq1hg=}</password>
+              <password>{AQAAABAAAAAQxhCLS36BpMaWDhgqNoitUC4dmm7R6clV5C8Rka1EDDE=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
