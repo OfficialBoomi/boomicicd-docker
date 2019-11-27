@@ -1,10 +1,9 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Creates a package from a process and deploys the package to a given envirnoment&#xd;
-If package with the same version exists, a new package is not created. If the packageID is deployed, the deployment step is ignored&#xd;
-&#xd;
-source bin/deployProcess.sh env=${env} processName=${processName} packageVersion=${packageVersion} createdBy=${createdBy} notes=${notes} listenerStatus=${listenerStatus}</description>
+  <description>Deploys a process to a local environment&#xd;
+Extracts the component file and pushes it to GIT&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -62,17 +61,18 @@ source bin/deployProcess.sh env=${env} processName=${processName} packageVersion
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-cd ${SCRIPTS_HOME}
 saveProcessName=${processName}
-source bin/queryProcess.sh processName=${processName}
-source bin/queryEnvironment.sh env=${env} classification=&quot;*&quot;
+source bin/queryProcess.sh processName=&quot;${processName}&quot;
+source bin/queryEnvironment.sh env=&quot;${env}&quot; classification=&quot;*&quot;
 toEnvId=$envId
 deployProcessId=$processId
 source bin/createProcessAttachment.sh envId=$envId processId=$processId componentType=&quot;Process&quot;
 source bin/deployProcess.sh processId=${deployProcessId} envId=${toEnvId} componentType=&quot;Process&quot; notes=&quot;${notes}&quot;
+sleep 10; # wait few seconds before file gets downloaded&quot;
 mkdir -p &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
-cp /var/jenkins_home/boomi/Atom_${atomName}/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/*
-for file in &quot;&quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/*.xml&quot;; do tidy -m -i -xml $file; done
+cp /var/jenkins_home/boomi/Atom_${atomName}/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;/
+cd &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
+for file in *.xml; do tidy -m -i -xml $file; done
 
 cd &quot;${WORKSPACE}/${BUILD_NUMBER}&quot;
 git add ${saveProcessName}
@@ -81,14 +81,6 @@ git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
 
 </command>
     </hudson.tasks.Shell>
-    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.10">
-      <project></project>
-      <properties></properties>
-      <javaOpts></javaOpts>
-      <additionalArguments></additionalArguments>
-      <jdk>(Inherit From Job)</jdk>
-      <task></task>
-    </hudson.plugins.sonar.SonarRunnerBuilder>
   </builders>
   <publishers>
     <hudson.plugins.git.GitPublisher plugin="git@4.0.0">

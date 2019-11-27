@@ -6,7 +6,7 @@ ARGUMENTS=(processId envId componentType notes)
 JSON_FILE=json/deployProcess.json
 URL=$baseURL/Deployment
 id=id
-exportVariable=processDeploymentId
+exportVariable=deploymentId
 
 inputs "$@"
 if [ "$?" -gt "0" ]

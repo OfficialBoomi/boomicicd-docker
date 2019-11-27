@@ -28,6 +28,6 @@ then
 fi
 
 saveAtomId=${atomId}
-source bin/updateAtom.sh atomId=${atomId} purgeHistoryDays=${purgeHistoryDays}
+#source bin/updateAtom.sh atomId=${atomId} purgeHistoryDays=${purgeHistoryDays}
 source bin/createAtomAttachment.sh atomId=${saveAtomId} envId=${saveEnvId}
 clean

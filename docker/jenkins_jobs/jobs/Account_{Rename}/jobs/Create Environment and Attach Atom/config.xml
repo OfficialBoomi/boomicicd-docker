@@ -4,9 +4,9 @@
   <description>Create Environment env={Name} classification={TEST|PROD}  If environment exists the envId is returned.&#xd;
 Atom Name to attach to the environment&#xd;
 Role Name to attach to the environment&#xd;
-Set the Purge History Days to the Atom&#xd;
 &#xd;
-source bin/createEnvAndAttachRoleAndAtom.sh env=${env} classification=${classification} atomName=${atomName} roleName=${roleName} purgeHistoryDays=${purgeHistoryDays}</description>
+&#xd;
+source bin/createEnvAndAttachRoleAndAtom.sh env=${env} classification=${classification} atomName=${atomName} roleName=${roleName} </description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -33,12 +33,6 @@ source bin/createEnvAndAttachRoleAndAtom.sh env=${env} classification=${classifi
           <name>roleName</name>
           <description>Name of the role to attach to the Environment</description>
           <defaultValue></defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>purgeHistoryDay</name>
-          <description>No. of days of log retention days</description>
-          <defaultValue>30</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
@@ -81,7 +75,7 @@ echo $envId</command>
           </com.mig82.folders.properties.StringProperty>
           <com.mig82.folders.properties.StringProperty>
             <key>accountId</key>
-            <value></value>
+            <value>boomi_ajaynatarajan-J8WVSQ</value>
           </com.mig82.folders.properties.StringProperty>
           <com.mig82.folders.properties.StringProperty>
             <key>baseURL</key>
@@ -92,8 +86,8 @@ echo $envId</command>
             <value>/var/jenkins_home/cli/scripts</value>
           </com.mig82.folders.properties.StringProperty>
           <com.mig82.folders.properties.StringProperty>
-            <key>GIT_REPO</key>
-            <value>https://...git</value>
+            <key>SONAR_PROJECT_KEY</key>
+            <value>boomi</value>
           </com.mig82.folders.properties.StringProperty>
         </properties>
       </folderProperties>
