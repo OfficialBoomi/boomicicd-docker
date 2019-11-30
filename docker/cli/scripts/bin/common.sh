@@ -86,3 +86,8 @@ function callAPI {
   	export ${exportVariable}=`jq -r .$id "${WORKSPACE}"/out.json`
  fi
 }
+
+
+function extract {
+  	export ${2}="`jq -r .${1} "${WORKSPACE}"/out.json`"
+}
