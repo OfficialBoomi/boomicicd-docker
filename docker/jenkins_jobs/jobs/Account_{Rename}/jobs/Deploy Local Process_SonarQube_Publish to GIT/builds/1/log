@@ -1,0 +1,104 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace
+using credential git_id
+Cloning the remote Git repository
+Cloning repository https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git
+ > git init /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace # timeout=10
+Fetching upstream changes from https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials Git username and password
+ > git fetch --tags --progress https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git # timeout=10
+Fetching upstream changes from https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git
+using GIT_ASKPASS to set credentials Git username and password
+ > git fetch --tags --progress https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 65a0a47165ec51ede6404676c85a0a05269c7ca5 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 65a0a47165ec51ede6404676c85a0a05269c7ca5 # timeout=10
+Commit message: "Initial commit"
+First time build. Skipping changelog.
+[workspace] $ /bin/bash -xe /tmp/jenkins2215915576415145461.sh
++ cd /var/jenkins_home/cli/scripts
++ source bin/queryEnvironment.sh env=#jenkins 'classification=*'
+++ source bin/common.sh
+++ ARGUMENTS=(env classification)
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query
+++ id='result[0].id'
+++ exportVariable=envId
+++ inputs env=#jenkins 'classification=*'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo env=#jenkins
+++ KEY=env
++++ cut -f2 -d=
++++ echo env=#jenkins
+++ VALUE='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset env
+++ export eval env=#jenkins
+++ env='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' env = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo 'classification=*'
+++ KEY=classification
++++ cut -f2 -d=
++++ echo 'classification=*'
+++ VALUE='*'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset classification
+++ export eval 'classification=*'
+++ classification='*'
+++ '[' classification = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '#jenkins' ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '*' ']'
+++ '[' 0 -gt 0 ']'
+++ '[' '*' = '*' ']'
+++ JSON_FILE=json/queryEnvironmentAnyClassification.json
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/#jenkins/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/" '
+++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/"  json/queryEnvironmentAnyClassification.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval sed -e '"s/\${env}/#jenkins/"' -e '"s/\${classification}/*/"' json/queryEnvironmentAnyClassification.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy' Local Process_SonarQube_Publish to 'GIT/workspace"/tmp.json'
++++ sed -e 's/${env}/#jenkins/' -e 's/${classification}/*/' json/queryEnvironmentAnyClassification.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z envId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset env
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset classification
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ export toEnvId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ toEnvId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ saveNotes='This package is ...'
++ IFS=,
+++ echo ''
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/1'
+/tmp/jenkins2215915576415145461.sh: line 31: cd: /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/1: No such file or directory
+Build step 'Execute shell' marked build as failure
+Previous steps failed the build.
+Result is: FAILURE
+Build step 'Quality Gates Sonarqube Plugin' marked build as failure
+Build did not succeed and the project is configured to only push after a successful build, so no pushing will occur.
+Finished: FAILURE

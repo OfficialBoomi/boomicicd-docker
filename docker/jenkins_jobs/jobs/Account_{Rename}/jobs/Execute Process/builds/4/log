@@ -1,0 +1,181 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace
+[workspace] $ /bin/bash -xe /tmp/jenkins164969650450092070.sh
++ cd /var/jenkins_home/cli/scripts
++ source bin/executeProcess.sh '"(Test) httpservice"' dev_cloud01
+++ source bin/common.sh
+++ ARGUMENTS=(atomName atomType processName)
+++ inputs '"(Test) httpservice"' dev_cloud01
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo '"(Test)' 'httpservice"'
+++ KEY='"(Test) httpservice"'
++++ cut -f2 -d=
++++ echo '"(Test)' 'httpservice"'
+++ VALUE='"(Test) httpservice"'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' '"(Test)' 'httpservice"' = help ']'
+bin/common.sh: line 18: [: too many arguments
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo dev_cloud01
+++ KEY=dev_cloud01
++++ cut -f2 -d=
++++ echo dev_cloud01
+++ VALUE=dev_cloud01
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' dev_cloud01 = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z dev_cloud01 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '*' ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '"(Test) httpservice"' ']'
+++ '[' 0 -gt 0 ']'
+++ source bin/queryAtom.sh atomName=dev_cloud01 atomStatus=online 'atomType=*'
++++ source bin/common.sh
++++ ARGUMENTS=(atomName atomType atomStatus)
++++ JSON_FILE=json/queryAtom.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Atom/query
++++ id='result[0].id'
++++ exportVariable=atomId
++++ inputs atomName=dev_cloud01 atomStatus=online 'atomType=*'
++++ for ARGUMENT in '"$@"'
+++++ echo atomName=dev_cloud01
+++++ cut -f1 -d=
++++ KEY=atomName
+++++ echo atomName=dev_cloud01
+++++ cut -f2 -d=
++++ VALUE=dev_cloud01
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomName
++++ export eval atomName=dev_cloud01
++++ atomName=dev_cloud01
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' atomName = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo atomStatus=online
+++++ cut -f1 -d=
++++ KEY=atomStatus
+++++ echo atomStatus=online
+++++ cut -f2 -d=
++++ VALUE=online
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomStatus
++++ export eval atomStatus=online
++++ atomStatus=online
++++ '[' atomStatus = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo 'atomType=*'
+++++ cut -f1 -d=
++++ KEY=atomType
+++++ echo 'atomType=*'
+++++ cut -f2 -d=
++++ VALUE='*'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomType
++++ export eval 'atomType=*'
++++ atomType='*'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' atomType = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z dev_cloud01 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z '*' ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z online ']'
++++ '[' '*' = '*' ']'
++++ JSON_FILE=json/queryAtomAny.json
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/dev_cloud01/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/dev_cloud01/"  -e "s/\${atomType}/*/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/dev_cloud01/"  -e "s/\${atomType}/*/"  -e "s/\${atomStatus}/online/" '
++++ var='sed  -e "s/\${atomName}/dev_cloud01/"  -e "s/\${atomType}/*/"  -e "s/\${atomStatus}/online/"  json/queryAtomAny.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace"/tmp.json'
++++ eval sed -e '"s/\${atomName}/dev_cloud01/"' -e '"s/\${atomType}/*/"' -e '"s/\${atomStatus}/online/"' json/queryAtomAny.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute' 'Process/workspace"/tmp.json'
+++++ sed -e 's/${atomName}/dev_cloud01/' -e 's/${atomType}/*/' -e 's/${atomStatus}/online/' json/queryAtomAny.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Atom/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace/tmp.json'
++++ '[' '!' -z atomId ']'
+++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace/out.json'
++++ export atomId=f1e6bdad-f33f-4ff5-8e37-2dd49dad729a
++++ atomId=f1e6bdad-f33f-4ff5-8e37-2dd49dad729a
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomName
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomType
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomStatus
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ source bin/queryProcess.sh 'processName="(Test)' 'httpservice"'
++++ source bin/common.sh
++++ ARGUMENTS=(processName)
++++ JSON_FILE=json/queryProcess.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query
++++ id='result[0].id'
++++ exportVariable=processId
++++ inputs 'processName="(Test)' 'httpservice"'
++++ for ARGUMENT in '"$@"'
+++++ echo 'processName="(Test)'
+++++ cut -f1 -d=
++++ KEY=processName
+++++ echo 'processName="(Test)'
+++++ cut -f2 -d=
++++ VALUE='"(Test)'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset processName
++++ export eval 'processName="(Test)'
++++ processName='"(Test)'
++++ '[' processName = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo 'httpservice"'
+++++ cut -f1 -d=
++++ KEY='httpservice"'
+++++ echo 'httpservice"'
+++++ cut -f2 -d=
++++ VALUE='httpservice"'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' 'httpservice"' = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z '"(Test)' ']'
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processName}/"(Test)/" '
++++ var='sed  -e "s/\${processName}/"(Test)/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace"/tmp.json'
++++ eval sed -e '"s/\${processName}/"(Test)/"' json/queryProcess.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute' 'Process/workspace"/tmp.json'
+bin/common.sh: eval: line 66: syntax error near unexpected token `('
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

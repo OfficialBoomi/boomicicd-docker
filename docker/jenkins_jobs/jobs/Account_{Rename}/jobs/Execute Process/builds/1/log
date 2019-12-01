@@ -1,0 +1,9 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Execute Process/workspace
+[workspace] $ /bin/bash -xe /tmp/jenkins6977865776878335918.sh
++ cd /var/jenkins_home/cli/scripts
++ source bin/executeProcess
+/tmp/jenkins6977865776878335918.sh: line 3: bin/executeProcess: No such file or directory
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

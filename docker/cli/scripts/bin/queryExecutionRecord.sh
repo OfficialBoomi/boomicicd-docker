@@ -8,8 +8,8 @@ JSON_FILE=json/queryExecutionRecord.json
 URL=$baseURL/ExecutionRecord/query
 id=result[0].executionId
 exportVariable=executionId
-now=`date -u +"%Y-%m-%d"T%H:%M:%SZ`
-lag=`date -u +"%Y-%m-%d"T%H:%M:%SZ --date '-2 min'`
+now=`date -u +"%Y-%m-%d"T%H:%M:%SZ --date '+1 min'`
+lag=`date -u +"%Y-%m-%d"T%H:%M:%SZ --date '-3 min'`
 if [ -z "${to}" ]
 then
        to=$now

@@ -12,8 +12,8 @@ then
    return 255;
 fi
  
-saveAtomName=${atomName}
-source bin/queryAtom.sh atomName=${atomName} atomType="*" atomStatus="*"
+saveAtomName="${atomName}"
+source bin/queryAtom.sh atomName="${atomName}" atomType="*" atomStatus="*"
 
 if [ "$?" -gt "0" ]
 then

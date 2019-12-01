@@ -1,0 +1,597 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace
+[workspace] $ /bin/bash -xe /tmp/jenkins2145094469729751605.sh
++ cd /var/jenkins_home/cli/scripts
++ INSTALL_DIR=/var/jenkins_home/boomi
++ ATOM_HOME=/var/jenkins_home/boomi/Atom_jenkins01
++ source bin/installerToken.sh atomType=ATOM
+++ source bin/common.sh
+++ ARGUMENTS=(atomType)
+++ JSON_FILE=json/installerToken.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/InstallerToken
+++ id=token
+++ exportVariable=tokenId
+++ inputs atomType=ATOM
+++ for ARGUMENT in '"$@"'
++++ echo atomType=ATOM
++++ cut -f1 -d=
+++ KEY=atomType
++++ echo atomType=ATOM
++++ cut -f2 -d=
+++ VALUE=ATOM
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset atomType
+++ export eval atomType=ATOM
+++ atomType=ATOM
+++ '[' atomType = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z ATOM ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${atomType}/ATOM/" '
+++ var='sed  -e "s/\${atomType}/ATOM/"  json/installerToken.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
+++ eval sed -e '"s/\${atomType}/ATOM/"' json/installerToken.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
++++ sed -e 's/${atomType}/ATOM/' json/installerToken.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/InstallerToken '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
+++ '[' '!' -z tokenId ']'
++++ jq -r .token '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
+++ export tokenId=atom-0b9ea34a-6d3d-410a-85bd-7be321d47cab
+++ tokenId=atom-0b9ea34a-6d3d-410a-85bd-7be321d47cab
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset atomType
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ bin/installAtom.sh atomName=jenkins01 tokenId=atom-0b9ea34a-6d3d-410a-85bd-7be321d47cab INSTALL_DIR=/var/jenkins_home/boomi
+Starting Installer ...
+The installation directory has been set to /var/jenkins_home/boomi/Atom_jenkins01.
+Retrieving Build Number
+Extracting files...
+Downloading JRE Files
+Unpacking JRE Files
+Downloading Atom Files
+Retrieving Container ID
+Retrieving account keystore.
+Retrieving account trustore.
+Configuring Atom.
+Finishing installation...
++ source bin/createEnvAndAttachRoleAndAtom.sh env=#jenkins classification=TEST atomName=jenkins01 roleName=Administrator purgeHistoryDays=1
+++ source bin/common.sh
+++ ARGUMENTS=(env classification atomName roleName purgeHistoryDays)
+++ '[' -z '' ']'
+++ purgeHistoryDays=30
+++ inputs env=#jenkins classification=TEST atomName=jenkins01 roleName=Administrator purgeHistoryDays=1
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo env=#jenkins
+++ KEY=env
++++ cut -f2 -d=
++++ echo env=#jenkins
+++ VALUE='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset env
+++ export eval env=#jenkins
+++ env='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' env = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo classification=TEST
+++ KEY=classification
++++ cut -f2 -d=
++++ echo classification=TEST
+++ VALUE=TEST
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset classification
+++ export eval classification=TEST
+++ classification=TEST
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' classification = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo atomName=jenkins01
+++ KEY=atomName
++++ cut -f2 -d=
++++ echo atomName=jenkins01
+++ VALUE=jenkins01
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset atomName
+++ export eval atomName=jenkins01
+++ atomName=jenkins01
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' atomName = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo roleName=Administrator
+++ KEY=roleName
++++ cut -f2 -d=
++++ echo roleName=Administrator
+++ VALUE=Administrator
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset roleName
+++ export eval roleName=Administrator
+++ roleName=Administrator
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' roleName = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo purgeHistoryDays=1
+++ KEY=purgeHistoryDays
++++ cut -f2 -d=
++++ echo purgeHistoryDays=1
+++ VALUE=1
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset purgeHistoryDays
+++ export eval purgeHistoryDays=1
+++ purgeHistoryDays=1
+++ '[' purgeHistoryDays = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '#jenkins' ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z TEST ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z jenkins01 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Administrator ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 1 ']'
+++ '[' 0 -gt 0 ']'
+++ saveEnv='#jenkins'
+++ source bin/createEnvironment.sh env=#jenkins classification=TEST
++++ source bin/common.sh
++++ source bin/queryEnvironment.sh env=#jenkins classification=TEST
+++++ source bin/common.sh
+++++ ARGUMENTS=(env classification)
+++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query
+++++ id='result[0].id'
+++++ exportVariable=envId
+++++ inputs env=#jenkins classification=TEST
+++++ for ARGUMENT in '"$@"'
++++++ cut -f1 -d=
++++++ echo env=#jenkins
+++++ KEY=env
++++++ cut -f2 -d=
++++++ echo env=#jenkins
+++++ VALUE='#jenkins'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ unset env
+++++ export eval env=#jenkins
+++++ env='#jenkins'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ '[' env = help ']'
+++++ for ARGUMENT in '"$@"'
++++++ cut -f1 -d=
++++++ echo classification=TEST
+++++ KEY=classification
++++++ cut -f2 -d=
++++++ echo classification=TEST
+++++ VALUE=TEST
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ unset classification
+++++ export eval classification=TEST
+++++ classification=TEST
+++++ '[' classification = help ']'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ '[' -z '#jenkins' ']'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ '[' -z TEST ']'
+++++ '[' 0 -gt 0 ']'
+++++ '[' TEST = '*' ']'
+++++ JSON_FILE=json/queryEnvironment.json
+++++ createJSON
+++++ var='sed '
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ var='sed  -e "s/\${env}/#jenkins/" '
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/TEST/" '
+++++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/TEST/"  json/queryEnvironment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
+++++ eval sed -e '"s/\${env}/#jenkins/"' -e '"s/\${classification}/TEST/"' json/queryEnvironment.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
++++++ sed -e 's/${env}/#jenkins/' -e 's/${classification}/TEST/' json/queryEnvironment.json
+++++ callAPI
+++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
+++++ '[' '!' -z envId ']'
++++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
+++++ export envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ clean
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ unset env
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ unset classification
+++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++++ return=($?)
++++ '[' 0 -gt 0 ']'
++++ ARGUMENTS=(env classification)
++++ JSON_FILE=json/createEnvironment.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment
++++ id=id
++++ exportVariable=envId
++++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
++++ '[' 9217e15e-b568-4e29-a06c-31cf550fa8f0 == null ']'
+++ saveEnvId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ source bin/createEnvironmentRole.sh env=#jenkins roleName=Administrator
++++ source bin/common.sh
++++ ARGUMENTS=(roleName env)
++++ inputs env=#jenkins roleName=Administrator
++++ for ARGUMENT in '"$@"'
+++++ echo env=#jenkins
+++++ cut -f1 -d=
++++ KEY=env
+++++ cut -f2 -d=
+++++ echo env=#jenkins
++++ VALUE='#jenkins'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset env
++++ export eval env=#jenkins
++++ env='#jenkins'
++++ '[' env = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo roleName=Administrator
+++++ cut -f1 -d=
++++ KEY=roleName
+++++ echo roleName=Administrator
+++++ cut -f2 -d=
++++ VALUE=Administrator
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset roleName
++++ export eval roleName=Administrator
++++ roleName=Administrator
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' roleName = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z Administrator ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z '#jenkins' ']'
++++ '[' 0 -gt 0 ']'
++++ source bin/queryRole.sh name=Administrator
+++++ source bin/common.sh
+++++ ARGUMENTS=(roleName)
+++++ JSON_FILE=json/queryRole.json
+++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Role/query
+++++ id='result[0].id'
+++++ exportVariable=roleId
+++++ inputs name=Administrator
+++++ for ARGUMENT in '"$@"'
++++++ echo name=Administrator
++++++ cut -f1 -d=
+++++ KEY=name
++++++ cut -f2 -d=
++++++ echo name=Administrator
+++++ VALUE=Administrator
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ '[' name = help ']'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ '[' -z Administrator ']'
+++++ '[' 0 -gt 0 ']'
+++++ createJSON
+++++ var='sed '
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ var='sed  -e "s/\${roleName}/Administrator/" '
+++++ var='sed  -e "s/\${roleName}/Administrator/"  json/queryRole.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
+++++ eval sed -e '"s/\${roleName}/Administrator/"' json/queryRole.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
++++++ sed -e 's/${roleName}/Administrator/' json/queryRole.json
+++++ callAPI
+++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Role/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
+++++ '[' '!' -z roleId ']'
++++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
+++++ export roleId=42832489-2897-11e2-a100-782bcb5722c0
+++++ roleId=42832489-2897-11e2-a100-782bcb5722c0
+++++ clean
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ unset roleName
+++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++++ source bin/queryEnvironment.sh name= 'classification=*'
+++++ source bin/common.sh
+++++ ARGUMENTS=(env classification)
+++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query
+++++ id='result[0].id'
+++++ exportVariable=envId
+++++ inputs name= 'classification=*'
+++++ for ARGUMENT in '"$@"'
++++++ cut -f1 -d=
++++++ echo name=
+++++ KEY=name
++++++ cut -f2 -d=
++++++ echo name=
+++++ VALUE=
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ '[' name = help ']'
+++++ for ARGUMENT in '"$@"'
++++++ cut -f1 -d=
++++++ echo 'classification=*'
+++++ KEY=classification
++++++ cut -f2 -d=
++++++ echo 'classification=*'
+++++ VALUE='*'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ case "$KEY" in
+++++ unset classification
+++++ export eval 'classification=*'
+++++ classification='*'
+++++ '[' classification = help ']'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ '[' -z '#jenkins' ']'
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ '[' -z '*' ']'
+++++ '[' 0 -gt 0 ']'
+++++ '[' '*' = '*' ']'
+++++ JSON_FILE=json/queryEnvironmentAnyClassification.json
+++++ createJSON
+++++ var='sed '
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ var='sed  -e "s/\${env}/#jenkins/" '
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/" '
+++++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/"  json/queryEnvironmentAnyClassification.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
+++++ eval sed -e '"s/\${env}/#jenkins/"' -e '"s/\${classification}/*/"' json/queryEnvironmentAnyClassification.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
++++++ sed -e 's/${env}/#jenkins/' -e 's/${classification}/*/' json/queryEnvironmentAnyClassification.json
+++++ callAPI
+++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
+++++ '[' '!' -z envId ']'
++++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
+++++ export envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ clean
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ unset env
+++++ for i in '"${ARGUMENTS[@]}"'
+++++ unset classification
+++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++++ ARGUMENTS=(roleId envId)
++++ JSON_FILE=json/createEnvironmentRole.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/EnvironmentRole/
++++ id=id
++++ exportVariable=roleattachmentId
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${roleId}/42832489-2897-11e2-a100-782bcb5722c0/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${roleId}/42832489-2897-11e2-a100-782bcb5722c0/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
++++ var='sed  -e "s/\${roleId}/42832489-2897-11e2-a100-782bcb5722c0/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  json/createEnvironmentRole.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
++++ eval sed -e '"s/\${roleId}/42832489-2897-11e2-a100-782bcb5722c0/"' -e '"s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"' json/createEnvironmentRole.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
+++++ sed -e 's/${roleId}/42832489-2897-11e2-a100-782bcb5722c0/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' json/createEnvironmentRole.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/EnvironmentRole/ '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
++++ '[' '!' -z roleattachmentId ']'
+++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
++++ export roleattachmentId=null
++++ roleattachmentId=null
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset roleId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset envId
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ source bin/queryAtom.sh atomName=jenkins01 'atomType=*' 'atomStatus=*'
++++ source bin/common.sh
++++ ARGUMENTS=(atomName atomType atomStatus)
++++ JSON_FILE=json/queryAtom.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Atom/query
++++ id='result[0].id'
++++ exportVariable=atomId
++++ inputs atomName=jenkins01 'atomType=*' 'atomStatus=*'
++++ for ARGUMENT in '"$@"'
+++++ cut -f1 -d=
+++++ echo atomName=jenkins01
++++ KEY=atomName
+++++ cut -f2 -d=
+++++ echo atomName=jenkins01
++++ VALUE=jenkins01
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomName
++++ export eval atomName=jenkins01
++++ atomName=jenkins01
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' atomName = help ']'
++++ for ARGUMENT in '"$@"'
+++++ cut -f1 -d=
+++++ echo 'atomType=*'
++++ KEY=atomType
+++++ cut -f2 -d=
+++++ echo 'atomType=*'
++++ VALUE='*'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomType
++++ export eval 'atomType=*'
++++ atomType='*'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' atomType = help ']'
++++ for ARGUMENT in '"$@"'
+++++ cut -f1 -d=
+++++ echo 'atomStatus=*'
++++ KEY=atomStatus
+++++ cut -f2 -d=
+++++ echo 'atomStatus=*'
++++ VALUE='*'
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomStatus
++++ export eval 'atomStatus=*'
++++ atomStatus='*'
++++ '[' atomStatus = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z jenkins01 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z '*' ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z '*' ']'
++++ '[' '*' = '*' ']'
++++ JSON_FILE=json/queryAtomAny.json
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/jenkins01/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/jenkins01/"  -e "s/\${atomType}/*/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomName}/jenkins01/"  -e "s/\${atomType}/*/"  -e "s/\${atomStatus}/*/" '
++++ var='sed  -e "s/\${atomName}/jenkins01/"  -e "s/\${atomType}/*/"  -e "s/\${atomStatus}/*/"  json/queryAtomAny.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
++++ eval sed -e '"s/\${atomName}/jenkins01/"' -e '"s/\${atomType}/*/"' -e '"s/\${atomStatus}/*/"' json/queryAtomAny.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
+++++ sed -e 's/${atomName}/jenkins01/' -e 's/${atomType}/*/' -e 's/${atomStatus}/*/' json/queryAtomAny.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Atom/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
++++ '[' '!' -z atomId ']'
+++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
++++ export atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomName
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomType
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomStatus
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ '[' -z 79556b55-77a1-4843-ab0a-b15a2e9d6728 ']'
+++ '[' 79556b55-77a1-4843-ab0a-b15a2e9d6728 == null ']'
+++ saveAtomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
+++ source bin/createAtomAttachment.sh atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ source bin/common.sh
++++ ARGUMENTS=(atomId envId)
++++ JSON_FILE=json/createAtomAttachment.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/EnvironmentAtomAttachment/
++++ id=id
++++ exportVariable=atomAttachmentId
++++ inputs atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for ARGUMENT in '"$@"'
+++++ cut -f1 -d=
+++++ echo atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ KEY=atomId
+++++ cut -f2 -d=
+++++ echo atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ VALUE=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset atomId
++++ export eval atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ atomId=79556b55-77a1-4843-ab0a-b15a2e9d6728
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' atomId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ cut -f1 -d=
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ KEY=envId
+++++ cut -f2 -d=
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset envId
++++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ '[' envId = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 79556b55-77a1-4843-ab0a-b15a2e9d6728 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomId}/79556b55-77a1-4843-ab0a-b15a2e9d6728/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${atomId}/79556b55-77a1-4843-ab0a-b15a2e9d6728/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
++++ var='sed  -e "s/\${atomId}/79556b55-77a1-4843-ab0a-b15a2e9d6728/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  json/createAtomAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace"/tmp.json'
++++ eval sed -e '"s/\${atomId}/79556b55-77a1-4843-ab0a-b15a2e9d6728/"' -e '"s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"' json/createAtomAttachment.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install' Local 'Atom/workspace"/tmp.json'
+++++ sed -e 's/${atomId}/79556b55-77a1-4843-ab0a-b15a2e9d6728/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' json/createAtomAttachment.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/EnvironmentAtomAttachment/ '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/tmp.json'
++++ '[' '!' -z atomAttachmentId ']'
+++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Install Local Atom/workspace/out.json'
++++ export atomAttachmentId=RU5WX0NPTlRfQVRUQUNINzk1NTZiNTUtNzdhMS00ODQzLWFiMGEtYjE1YTJlOWQ2NzI4OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ atomAttachmentId=RU5WX0NPTlRfQVRUQUNINzk1NTZiNTUtNzdhMS00ODQzLWFiMGEtYjE1YTJlOWQ2NzI4OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset atomId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset envId
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ clean
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ cd /var/jenkins_home/boomi/Atom_jenkins01/bin
++ sed -e s/512/128/g atom.vmoptions
++ /var/jenkins_home/boomi/Atom_jenkins01/bin/atom stop
++ mv atom.vmoptions_1 atom.vmoptions
++ /var/jenkins_home/boomi/Atom_jenkins01/bin/atom start
+Starting atom
++ /var/jenkins_home/boomi/Atom_jenkins01/bin/atom status
+atom is running.
+Finished: SUCCESS

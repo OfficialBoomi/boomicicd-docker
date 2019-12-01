@@ -18,7 +18,7 @@ fromEnvId=$envId
 source bin/queryEnvironment.sh env=$to classification="*"
 toEnvId=$envId
 
-source bin/queryProcess.sh processName=$processName 
+source bin/queryProcess.sh processName="$processName" 
 # saving the id for future use
 deployProcessId=processId
 

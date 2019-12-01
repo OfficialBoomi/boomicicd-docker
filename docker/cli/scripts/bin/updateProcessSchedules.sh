@@ -22,7 +22,7 @@ then
         return 255;
 fi
 
-source bin/queryProcessScheduleStatus.sh atomName=$atomName atomType=$atomType processName=$processName
+source bin/queryProcessScheduleStatus.sh atomName="$atomName" atomType=$atomType processName="$processName"
 
 echo $scheduleId
 

@@ -1,0 +1,73 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Multiple Processes/workspace
+[workspace] $ /bin/bash -xe /tmp/jenkins5690568463499105636.sh
++ cd /var/jenkins_home/cli/scripts
++ source bin/queryEnvironment.sh env=dev_cloud01 'classification=*'
+++ source bin/common.sh
+++ ARGUMENTS=(env classification)
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query
+++ id='result[0].id'
+++ exportVariable=envId
+++ inputs env=dev_cloud01 'classification=*'
+++ for ARGUMENT in '"$@"'
++++ echo env=dev_cloud01
++++ cut -f1 -d=
+++ KEY=env
++++ echo env=dev_cloud01
++++ cut -f2 -d=
+++ VALUE=dev_cloud01
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset env
+++ export eval env=dev_cloud01
+++ env=dev_cloud01
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' env = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo 'classification=*'
++++ cut -f1 -d=
+++ KEY=classification
++++ cut -f2 -d=
++++ echo 'classification=*'
+++ VALUE='*'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset classification
+++ export eval 'classification=*'
+++ classification='*'
+++ '[' classification = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z dev_cloud01 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '*' ']'
+++ '[' 0 -gt 0 ']'
+++ '[' '*' = '*' ']'
+++ JSON_FILE=json/queryEnvironmentAnyClassification.json
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/dev_cloud01/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/dev_cloud01/"  -e "s/\${classification}/*/" '
+++ var='sed  -e "s/\${env}/dev_cloud01/"  -e "s/\${classification}/*/"  json/queryEnvironmentAnyClassification.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Multiple Processes/workspace"/tmp.json'
+++ eval sed -e '"s/\${env}/dev_cloud01/"' -e '"s/\${classification}/*/"' json/queryEnvironmentAnyClassification.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy' Multiple 'Processes/workspace"/tmp.json'
++++ sed -e 's/${env}/dev_cloud01/' -e 's/${classification}/*/' json/queryEnvironmentAnyClassification.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Multiple Processes/workspace/tmp.json'
+++ '[' '!' -z envId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Multiple Processes/workspace/out.json'
+++ export envId=null
+++ envId=null
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset env
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset classification
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ export toEnvId=null
++ toEnvId=null
+Finished: SUCCESS

@@ -11,9 +11,9 @@ then
         return 255;
 fi
 
-source bin/queryAtom.sh atomName=$atomName atomStatus=online atomType=$atomType
+source bin/queryAtom.sh atomName="$atomName" atomStatus=online atomType=$atomType
 
-source bin/queryProcess.sh processName=$processName
+source bin/queryProcess.sh processName="$processName"
 
 ARGUMENTS=(atomId processId)
 JSON_FILE=json/executeProcess.json

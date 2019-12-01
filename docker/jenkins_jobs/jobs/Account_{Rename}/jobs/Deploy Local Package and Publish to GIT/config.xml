@@ -7,10 +7,6 @@ If package with the same version exists, a new package is not created. If the pa
 source bin/deployPackage.sh env=${env} processName=${processName} packageVersion=${packageVersion} createdBy=${createdBy} notes=${notes} listenerStatus=${listenerStatus}</description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.5">
-      <projectUrl>https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git/</projectUrl>
-      <displayName>Account_Boomi_AjayNatarajan</displayName>
-    </com.coravy.hudson.plugins.github.GithubProjectProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
@@ -49,6 +45,12 @@ source bin/deployPackage.sh env=${env} processName=${processName} packageVersion
           <defaultValue>RUNNING</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAG_NAME</name>
+          <description>Optional GIT Tag Name. Tag Names must not contain spaces.</description>
+          <defaultValue>Release</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -82,6 +84,8 @@ source ./bin/deployPackage.sh
 echo $deploymentId
 mkdir -p &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
 cp /var/jenkins_home/boomi/Atom_jenkins01/processes/${deployProcessId}/${deployProcessId}.xml &quot;${WORKSPACE}&quot;/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}/${deployProcessId}.xml
+cd &quot;${WORKSPACE}/${BUILD_NUMBER}/${saveProcessName}/${deployProcessId}&quot;
+for file in *.xml; do tidy -m -i -xml $file; done
 cd &quot;${WORKSPACE}/${BUILD_NUMBER}&quot;
 git add ${saveProcessName}
 git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
@@ -97,14 +101,12 @@ git commit -m &quot;Saving ${saveProcessName} file to GIT.&quot;
       <tagsToPush>
         <hudson.plugins.git.GitPublisher_-TagToPush>
           <targetRepoName>origin</targetRepoName>
-          <tagName>${BUILD_NUMBER}</tagName>
-          <tagMessage>Deploying to ${BUILD_NUMBER} to origin from Jenkins</tagMessage>
+          <tagName>$(TAG_NAME}_${BUILD_NUMBER}</tagName>
+          <tagMessage>Deploying to $(TAG_NAME}_${BUILD_NUMBER} to origin from Jenkins</tagMessage>
           <createTag>true</createTag>
           <updateTag>false</updateTag>
         </hudson.plugins.git.GitPublisher_-TagToPush>
       </tagsToPush>
-      <branchesToPush/>
-      <notesToPush/>
     </hudson.plugins.git.GitPublisher>
   </publishers>
   <buildWrappers>

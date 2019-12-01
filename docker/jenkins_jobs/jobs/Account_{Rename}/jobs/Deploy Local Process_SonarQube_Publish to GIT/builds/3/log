@@ -1,0 +1,1296 @@
+Started by user [8mha:////4Ok1FMdu9nVfgjEQYy40yb3Kewb6lt3Kkys0mJ3XX/aaAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace
+using credential git_id
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git # timeout=10
+Fetching upstream changes from https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials Git username and password
+ > git fetch --tags --progress https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 65a0a47165ec51ede6404676c85a0a05269c7ca5 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 65a0a47165ec51ede6404676c85a0a05269c7ca5 # timeout=10
+Commit message: "Initial commit"
+ > git rev-list --no-walk 65a0a47165ec51ede6404676c85a0a05269c7ca5 # timeout=10
+[workspace] $ /bin/bash -xe /tmp/jenkins4717402051884838864.sh
++ cd /var/jenkins_home/cli/scripts
++ source bin/queryEnvironment.sh env=#jenkins 'classification=*'
+++ source bin/common.sh
+++ ARGUMENTS=(env classification)
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query
+++ id='result[0].id'
+++ exportVariable=envId
+++ inputs env=#jenkins 'classification=*'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo env=#jenkins
+++ KEY=env
++++ cut -f2 -d=
++++ echo env=#jenkins
+++ VALUE='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset env
+++ export eval env=#jenkins
+++ env='#jenkins'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' env = help ']'
+++ for ARGUMENT in '"$@"'
++++ cut -f1 -d=
++++ echo 'classification=*'
+++ KEY=classification
++++ echo 'classification=*'
++++ cut -f2 -d=
+++ VALUE='*'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset classification
+++ export eval 'classification=*'
+++ classification='*'
+++ '[' classification = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '#jenkins' ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '*' ']'
+++ '[' 0 -gt 0 ']'
+++ '[' '*' = '*' ']'
+++ JSON_FILE=json/queryEnvironmentAnyClassification.json
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/#jenkins/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/" '
+++ var='sed  -e "s/\${env}/#jenkins/"  -e "s/\${classification}/*/"  json/queryEnvironmentAnyClassification.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval sed -e '"s/\${env}/#jenkins/"' -e '"s/\${classification}/*/"' json/queryEnvironmentAnyClassification.json '>' '"/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy' Local Process_SonarQube_Publish to 'GIT/workspace"/tmp.json'
++++ sed -e 's/${env}/#jenkins/' -e 's/${classification}/*/' json/queryEnvironmentAnyClassification.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Environment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z envId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset env
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset classification
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ export toEnvId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ toEnvId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ saveNotes='This package is ...'
++ IFS=,
+++ echo 'httpservice, (Sub) httpservice, (Test) httpservice'
++ for processName in '`echo "${processNames}"`'
++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ notes='This package is ...'
+++ echo httpservice
+++ xargs
++ processName=httpservice
++ saveProcessName=httpservice
++ echo 'Deploying httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0'
+Deploying httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0
++ source bin/queryProcess.sh processName=httpservice
+++ source bin/common.sh
+++ ARGUMENTS=(processName)
+++ JSON_FILE=json/queryProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query
+++ id='result[0].id'
+++ exportVariable=processId
+++ inputs processName=httpservice
+++ for ARGUMENT in '"$@"'
++++ echo processName=httpservice
++++ cut -f1 -d=
+++ KEY=processName
++++ echo processName=httpservice
++++ cut -f2 -d=
+++ VALUE=httpservice
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processName
+++ export eval processName=httpservice
+++ processName=httpservice
+++ '[' processName = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z httpservice ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processName}/httpservice/" '
+++ var='sed  -e "s/\${processName}/httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processName}/httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processName}/httpservice/' json/queryProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z processId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ jq -r '.result[0].id' out.json
+jq: error: Could not open file out.json: No such file or directory
+++ export componentId=
+++ componentId=
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processName
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ deployProcessId=5b4f5684-8f89-4b02-8b84-6774961049c6
++ source bin/createProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=5b4f5684-8f89-4b02-8b84-6774961049c6 componentType=Process
+++ source bin/common.sh
+++ source bin/queryProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=5b4f5684-8f89-4b02-8b84-6774961049c6 componentType=Process
++++ source bin/common.sh
++++ ARGUMENTS=(processId envId componentType)
++++ JSON_FILE=json/queryProcessAttachment.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query
++++ id='result[0].id'
++++ exportVariable=processAttachmentId
++++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=5b4f5684-8f89-4b02-8b84-6774961049c6 componentType=Process
++++ for ARGUMENT in '"$@"'
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f1 -d=
++++ KEY=envId
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f2 -d=
++++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset envId
++++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' envId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++++ cut -f1 -d=
++++ KEY=processId
+++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++++ cut -f2 -d=
++++ VALUE=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset processId
++++ export eval processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' processId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo componentType=Process
+++++ cut -f1 -d=
++++ KEY=componentType
+++++ echo componentType=Process
+++++ cut -f2 -d=
++++ VALUE=Process
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset componentType
++++ export eval componentType=Process
++++ componentType=Process
++++ '[' componentType = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 5b4f5684-8f89-4b02-8b84-6774961049c6 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z Process ']'
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
++++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ eval 'sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++++ sed -e 's/${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/queryProcessAttachment.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
++++ '[' '!' -z processAttachmentId ']'
+++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
++++ export processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WNWI0ZjU2ODQtOGY4OS00YjAyLThiODQtNjc3NDk2MTA0OWM2OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WNWI0ZjU2ODQtOGY4OS00YjAyLThiODQtNjc3NDk2MTA0OWM2OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset processId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset envId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset componentType
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ '[' 0 -gt 0 ']'
+++ ARGUMENTS=(processId envId componentType)
+++ JSON_FILE=json/createProcessAttachment.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/
+++ id=id
+++ exportVariable=processAttachmentId
+++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=5b4f5684-8f89-4b02-8b84-6774961049c6 componentType=Process
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ cut -f2 -d=
+++ VALUE=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ '[' componentType = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 5b4f5684-8f89-4b02-8b84-6774961049c6 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/createProcessAttachment.json
+++ '[' QVRUQUNIX1BST0NFU1NfRU5WNWI0ZjU2ODQtOGY4OS00YjAyLThiODQtNjc3NDk2MTA0OWM2OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA == null ']'
+++ '[' -z QVRUQUNIX1BST0NFU1NfRU5WNWI0ZjU2ODQtOGY4OS00YjAyLThiODQtNjc3NDk2MTA0OWM2OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA ']'
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ source bin/deployProcess.sh processId=5b4f5684-8f89-4b02-8b84-6774961049c6 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ source bin/common.sh
+++ ARGUMENTS=(processId envId componentType notes)
+++ JSON_FILE=json/deployProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment
+++ id=id
+++ exportVariable=deploymentId
+++ inputs processId=5b4f5684-8f89-4b02-8b84-6774961049c6 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ for ARGUMENT in '"$@"'
++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=5b4f5684-8f89-4b02-8b84-6774961049c6
++++ cut -f2 -d=
+++ VALUE=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ processId=5b4f5684-8f89-4b02-8b84-6774961049c6
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' componentType = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo 'notes=This package is ...'
++++ cut -f1 -d=
+++ KEY=notes
++++ echo 'notes=This package is ...'
++++ cut -f2 -d=
+++ VALUE='This package is ...'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset notes
+++ export eval 'notes=This package is ...'
+++ notes='This package is ...'
+++ '[' notes = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 5b4f5684-8f89-4b02-8b84-6774961049c6 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 'This package is ...' ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../" '
+++ var='sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/5b4f5684-8f89-4b02-8b84-6774961049c6/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' -e 's/${notes}/This package is .../' json/deployProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z deploymentId ']'
++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export deploymentId=f205ee40-b896-49f2-8c60-8f68b2a4ecb2
+++ deploymentId=f205ee40-b896-49f2-8c60-8f68b2a4ecb2
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset notes
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ sleep 10
++ mkdir -p '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/httpservice/5b4f5684-8f89-4b02-8b84-6774961049c6'
++ cp /var/jenkins_home/boomi/Atom_jenkins01/processes/5b4f5684-8f89-4b02-8b84-6774961049c6/5b4f5684-8f89-4b02-8b84-6774961049c6.xml '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/httpservice/5b4f5684-8f89-4b02-8b84-6774961049c6/'
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/httpservice/5b4f5684-8f89-4b02-8b84-6774961049c6'
++ for file in '*.xml'
++ tidy -m -i -xml 5b4f5684-8f89-4b02-8b84-6774961049c6.xml
+No warnings or errors were found.
+
+
+To learn more about HTML Tidy see http://tidy.sourceforge.net
+Please fill bug reports and queries using the "tracker" on the Tidy web site.
+Additionally, questions can be sent to html-tidy@w3.org
+HTML and CSS specifications are available from http://www.w3.org/
+Lobby your company to join W3C, see http://www.w3.org/Consortium
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3'
++ cd /var/jenkins_home/cli/scripts
++ for processName in '`echo "${processNames}"`'
++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ notes='This package is ...'
+++ echo ' (Sub) httpservice'
+++ xargs
++ processName='(Sub) httpservice'
++ saveProcessName='(Sub) httpservice'
++ echo 'Deploying (Sub) httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0'
+Deploying (Sub) httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0
++ source bin/queryProcess.sh 'processName=(Sub) httpservice'
+++ source bin/common.sh
+++ ARGUMENTS=(processName)
+++ JSON_FILE=json/queryProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query
+++ id='result[0].id'
+++ exportVariable=processId
+++ inputs 'processName=(Sub) httpservice'
+++ for ARGUMENT in '"$@"'
++++ echo 'processName=(Sub) httpservice'
++++ cut -f1 -d=
+++ KEY=processName
++++ echo 'processName=(Sub) httpservice'
++++ cut -f2 -d=
+++ VALUE='(Sub) httpservice'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processName
+++ export eval 'processName=(Sub) httpservice'
+++ processName='(Sub) httpservice'
+++ '[' processName = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '(Sub) httpservice' ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processName}/(Sub) httpservice/" '
+++ var='sed  -e "s/\${processName}/(Sub) httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processName}/(Sub) httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processName}/(Sub) httpservice/' json/queryProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z processId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export processId=65e836b8-8553-41f1-93dc-92174cef919b
+++ processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ jq -r '.result[0].id' out.json
+jq: error: Could not open file out.json: No such file or directory
+++ export componentId=
+++ componentId=
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processName
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ deployProcessId=65e836b8-8553-41f1-93dc-92174cef919b
++ source bin/createProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=65e836b8-8553-41f1-93dc-92174cef919b componentType=Process
+++ source bin/common.sh
+++ source bin/queryProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=65e836b8-8553-41f1-93dc-92174cef919b componentType=Process
++++ source bin/common.sh
++++ ARGUMENTS=(processId envId componentType)
++++ JSON_FILE=json/queryProcessAttachment.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query
++++ id='result[0].id'
++++ exportVariable=processAttachmentId
++++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=65e836b8-8553-41f1-93dc-92174cef919b componentType=Process
++++ for ARGUMENT in '"$@"'
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f1 -d=
++++ KEY=envId
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f2 -d=
++++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset envId
++++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' envId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
+++++ cut -f1 -d=
++++ KEY=processId
+++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
+++++ cut -f2 -d=
++++ VALUE=65e836b8-8553-41f1-93dc-92174cef919b
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset processId
++++ export eval processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' processId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo componentType=Process
+++++ cut -f1 -d=
++++ KEY=componentType
+++++ echo componentType=Process
+++++ cut -f2 -d=
++++ VALUE=Process
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset componentType
++++ export eval componentType=Process
++++ componentType=Process
++++ '[' componentType = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 65e836b8-8553-41f1-93dc-92174cef919b ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z Process ']'
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
++++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ eval 'sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++++ sed -e 's/${processId}/65e836b8-8553-41f1-93dc-92174cef919b/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/queryProcessAttachment.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
++++ '[' '!' -z processAttachmentId ']'
+++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
++++ export processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WNjVlODM2YjgtODU1My00MWYxLTkzZGMtOTIxNzRjZWY5MTliOjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WNjVlODM2YjgtODU1My00MWYxLTkzZGMtOTIxNzRjZWY5MTliOjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset processId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset envId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset componentType
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ '[' 0 -gt 0 ']'
+++ ARGUMENTS=(processId envId componentType)
+++ JSON_FILE=json/createProcessAttachment.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/
+++ id=id
+++ exportVariable=processAttachmentId
+++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=65e836b8-8553-41f1-93dc-92174cef919b componentType=Process
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ cut -f2 -d=
+++ VALUE=65e836b8-8553-41f1-93dc-92174cef919b
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=65e836b8-8553-41f1-93dc-92174cef919b
+++ processId=65e836b8-8553-41f1-93dc-92174cef919b
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ '[' componentType = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 65e836b8-8553-41f1-93dc-92174cef919b ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/65e836b8-8553-41f1-93dc-92174cef919b/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/createProcessAttachment.json
+++ '[' QVRUQUNIX1BST0NFU1NfRU5WNjVlODM2YjgtODU1My00MWYxLTkzZGMtOTIxNzRjZWY5MTliOjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA == null ']'
+++ '[' -z QVRUQUNIX1BST0NFU1NfRU5WNjVlODM2YjgtODU1My00MWYxLTkzZGMtOTIxNzRjZWY5MTliOjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA ']'
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ source bin/deployProcess.sh processId=65e836b8-8553-41f1-93dc-92174cef919b envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ source bin/common.sh
+++ ARGUMENTS=(processId envId componentType notes)
+++ JSON_FILE=json/deployProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment
+++ id=id
+++ exportVariable=deploymentId
+++ inputs processId=65e836b8-8553-41f1-93dc-92174cef919b envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ for ARGUMENT in '"$@"'
++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=65e836b8-8553-41f1-93dc-92174cef919b
++++ cut -f2 -d=
+++ VALUE=65e836b8-8553-41f1-93dc-92174cef919b
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=65e836b8-8553-41f1-93dc-92174cef919b
+++ processId=65e836b8-8553-41f1-93dc-92174cef919b
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' componentType = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo 'notes=This package is ...'
++++ cut -f1 -d=
+++ KEY=notes
++++ echo 'notes=This package is ...'
++++ cut -f2 -d=
+++ VALUE='This package is ...'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset notes
+++ export eval 'notes=This package is ...'
+++ notes='This package is ...'
+++ '[' notes = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 65e836b8-8553-41f1-93dc-92174cef919b ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 'This package is ...' ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../" '
+++ var='sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/65e836b8-8553-41f1-93dc-92174cef919b/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/65e836b8-8553-41f1-93dc-92174cef919b/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' -e 's/${notes}/This package is .../' json/deployProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z deploymentId ']'
++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export deploymentId=7d423d32-0828-4616-b9b3-8062b8720160
+++ deploymentId=7d423d32-0828-4616-b9b3-8062b8720160
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset notes
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ sleep 10
++ mkdir -p '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Sub) httpservice/65e836b8-8553-41f1-93dc-92174cef919b'
++ cp /var/jenkins_home/boomi/Atom_jenkins01/processes/65e836b8-8553-41f1-93dc-92174cef919b/65e836b8-8553-41f1-93dc-92174cef919b.xml '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Sub) httpservice/65e836b8-8553-41f1-93dc-92174cef919b/'
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Sub) httpservice/65e836b8-8553-41f1-93dc-92174cef919b'
++ for file in '*.xml'
++ tidy -m -i -xml 65e836b8-8553-41f1-93dc-92174cef919b.xml
+No warnings or errors were found.
+
+
+To learn more about HTML Tidy see http://tidy.sourceforge.net
+Please fill bug reports and queries using the "tracker" on the Tidy web site.
+Additionally, questions can be sent to html-tidy@w3.org
+HTML and CSS specifications are available from http://www.w3.org/
+Lobby your company to join W3C, see http://www.w3.org/Consortium
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3'
++ cd /var/jenkins_home/cli/scripts
++ for processName in '`echo "${processNames}"`'
++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++ notes='This package is ...'
+++ echo ' (Test) httpservice'
+++ xargs
++ processName='(Test) httpservice'
++ saveProcessName='(Test) httpservice'
++ echo 'Deploying (Test) httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0'
+Deploying (Test) httpservice to environment 9217e15e-b568-4e29-a06c-31cf550fa8f0
++ source bin/queryProcess.sh 'processName=(Test) httpservice'
+++ source bin/common.sh
+++ ARGUMENTS=(processName)
+++ JSON_FILE=json/queryProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query
+++ id='result[0].id'
+++ exportVariable=processId
+++ inputs 'processName=(Test) httpservice'
+++ for ARGUMENT in '"$@"'
++++ echo 'processName=(Test) httpservice'
++++ cut -f1 -d=
+++ KEY=processName
++++ echo 'processName=(Test) httpservice'
++++ cut -f2 -d=
+++ VALUE='(Test) httpservice'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processName
+++ export eval 'processName=(Test) httpservice'
+++ processName='(Test) httpservice'
+++ '[' processName = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z '(Test) httpservice' ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processName}/(Test) httpservice/" '
+++ var='sed  -e "s/\${processName}/(Test) httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processName}/(Test) httpservice/"  json/queryProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processName}/(Test) httpservice/' json/queryProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Process/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z processId ']'
++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ jq -r '.result[0].id' out.json
+jq: error: Could not open file out.json: No such file or directory
+++ export componentId=
+++ componentId=
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processName
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ deployProcessId=fe9fad2b-f91d-4870-9933-0faea5df0359
++ source bin/createProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=fe9fad2b-f91d-4870-9933-0faea5df0359 componentType=Process
+++ source bin/common.sh
+++ source bin/queryProcessAttachment.sh envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=fe9fad2b-f91d-4870-9933-0faea5df0359 componentType=Process
++++ source bin/common.sh
++++ ARGUMENTS=(processId envId componentType)
++++ JSON_FILE=json/queryProcessAttachment.json
++++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query
++++ id='result[0].id'
++++ exportVariable=processAttachmentId
++++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=fe9fad2b-f91d-4870-9933-0faea5df0359 componentType=Process
++++ for ARGUMENT in '"$@"'
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f1 -d=
++++ KEY=envId
+++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++++ cut -f2 -d=
++++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset envId
++++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' envId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++++ cut -f1 -d=
++++ KEY=processId
+++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++++ cut -f2 -d=
++++ VALUE=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset processId
++++ export eval processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ '[' processId = help ']'
++++ for ARGUMENT in '"$@"'
+++++ echo componentType=Process
+++++ cut -f1 -d=
++++ KEY=componentType
+++++ echo componentType=Process
+++++ cut -f2 -d=
++++ VALUE=Process
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ for i in '"${ARGUMENTS[@]}"'
++++ case "$KEY" in
++++ unset componentType
++++ export eval componentType=Process
++++ componentType=Process
++++ '[' componentType = help ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z fe9fad2b-f91d-4870-9933-0faea5df0359 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
++++ for i in '"${ARGUMENTS[@]}"'
++++ '[' -z Process ']'
++++ '[' 0 -gt 0 ']'
++++ createJSON
++++ var='sed '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
++++ for i in '"${ARGUMENTS[@]}"'
++++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
++++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ eval 'sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/queryProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++++ sed -e 's/${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/queryProcessAttachment.json
++++ callAPI
++++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/query '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
++++ '[' '!' -z processAttachmentId ']'
+++++ jq -r '.result[0].id' '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
++++ export processAttachmentId=null
++++ processAttachmentId=null
++++ clean
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset processId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset envId
++++ for i in '"${ARGUMENTS[@]}"'
++++ unset componentType
++++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+++ '[' 0 -gt 0 ']'
+++ ARGUMENTS=(processId envId componentType)
+++ JSON_FILE=json/createProcessAttachment.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/
+++ id=id
+++ exportVariable=processAttachmentId
+++ inputs envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 processId=fe9fad2b-f91d-4870-9933-0faea5df0359 componentType=Process
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ cut -f2 -d=
+++ VALUE=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ '[' componentType = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z fe9fad2b-f91d-4870-9933-0faea5df0359 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  json/createProcessAttachment.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' json/createProcessAttachment.json
+++ '[' null == null ']'
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/ProcessEnvironmentAttachment/ '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z processAttachmentId ']'
++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WZmU5ZmFkMmItZjkxZC00ODcwLTk5MzMtMGZhZWE1ZGYwMzU5OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
+++ processAttachmentId=QVRUQUNIX1BST0NFU1NfRU5WZmU5ZmFkMmItZjkxZC00ODcwLTk5MzMtMGZhZWE1ZGYwMzU5OjkyMTdlMTVlLWI1NjgtNGUyOS1hMDZjLTMxY2Y1NTBmYThmMA
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ source bin/deployProcess.sh processId=fe9fad2b-f91d-4870-9933-0faea5df0359 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ source bin/common.sh
+++ ARGUMENTS=(processId envId componentType notes)
+++ JSON_FILE=json/deployProcess.json
+++ URL=https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment
+++ id=id
+++ exportVariable=deploymentId
+++ inputs processId=fe9fad2b-f91d-4870-9933-0faea5df0359 envId=9217e15e-b568-4e29-a06c-31cf550fa8f0 componentType=Process 'notes=This package is ...'
+++ for ARGUMENT in '"$@"'
++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ cut -f1 -d=
+++ KEY=processId
++++ echo processId=fe9fad2b-f91d-4870-9933-0faea5df0359
++++ cut -f2 -d=
+++ VALUE=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset processId
+++ export eval processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ processId=fe9fad2b-f91d-4870-9933-0faea5df0359
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' processId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f1 -d=
+++ KEY=envId
++++ echo envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
++++ cut -f2 -d=
+++ VALUE=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset envId
+++ export eval envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ envId=9217e15e-b568-4e29-a06c-31cf550fa8f0
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' envId = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo componentType=Process
++++ cut -f1 -d=
+++ KEY=componentType
++++ echo componentType=Process
++++ cut -f2 -d=
+++ VALUE=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset componentType
+++ export eval componentType=Process
+++ componentType=Process
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ '[' componentType = help ']'
+++ for ARGUMENT in '"$@"'
++++ echo 'notes=This package is ...'
++++ cut -f1 -d=
+++ KEY=notes
++++ echo 'notes=This package is ...'
++++ cut -f2 -d=
+++ VALUE='This package is ...'
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ for i in '"${ARGUMENTS[@]}"'
+++ case "$KEY" in
+++ unset notes
+++ export eval 'notes=This package is ...'
+++ notes='This package is ...'
+++ '[' notes = help ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z fe9fad2b-f91d-4870-9933-0faea5df0359 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 9217e15e-b568-4e29-a06c-31cf550fa8f0 ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z Process ']'
+++ for i in '"${ARGUMENTS[@]}"'
+++ '[' -z 'This package is ...' ']'
+++ '[' 0 -gt 0 ']'
+++ createJSON
+++ var='sed '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/" '
+++ for i in '"${ARGUMENTS[@]}"'
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../" '
+++ var='sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
+++ eval 'sed  -e "s/\${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/"  -e "s/\${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/"  -e "s/\${componentType}/Process/"  -e "s/\${notes}/This package is .../"  json/deployProcess.json > "/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"/tmp.json'
++++ sed -e 's/${processId}/fe9fad2b-f91d-4870-9933-0faea5df0359/' -e 's/${envId}/9217e15e-b568-4e29-a06c-31cf550fa8f0/' -e 's/${componentType}/Process/' -e 's/${notes}/This package is .../' json/deployProcess.json
+++ callAPI
+++ curl -s -X POST -u **** -H 'Accept: application/json' -H 'Content-Type: application/json' https://api.boomi.com/api/rest/v1/boomi_ajaynatarajan-J8WVSQ/Deployment '-d@/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/tmp.json'
+++ '[' '!' -z deploymentId ']'
++++ jq -r .id '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/out.json'
+++ export deploymentId=f3956ee8-4f0f-4cef-9121-58dc7d90e966
+++ deploymentId=f3956ee8-4f0f-4cef-9121-58dc7d90e966
+++ clean
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset processId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset envId
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset componentType
+++ for i in '"${ARGUMENTS[@]}"'
+++ unset notes
+++ unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
++ sleep 10
++ mkdir -p '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Test) httpservice/fe9fad2b-f91d-4870-9933-0faea5df0359'
++ cp /var/jenkins_home/boomi/Atom_jenkins01/processes/fe9fad2b-f91d-4870-9933-0faea5df0359/fe9fad2b-f91d-4870-9933-0faea5df0359.xml '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Test) httpservice/fe9fad2b-f91d-4870-9933-0faea5df0359/'
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3/(Test) httpservice/fe9fad2b-f91d-4870-9933-0faea5df0359'
++ for file in '*.xml'
++ tidy -m -i -xml fe9fad2b-f91d-4870-9933-0faea5df0359.xml
+No warnings or errors were found.
+
+
+To learn more about HTML Tidy see http://tidy.sourceforge.net
+Please fill bug reports and queries using the "tracker" on the Tidy web site.
+Additionally, questions can be sent to html-tidy@w3.org
+HTML and CSS specifications are available from http://www.w3.org/
+Lobby your company to join W3C, see http://www.w3.org/Consortium
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3'
++ cd /var/jenkins_home/cli/scripts
++ cd '/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3'
++ git add .
++ git commit -m 'Saving /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3 file to GIT.'
+[detached HEAD e670bbf] Saving /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/3 file to GIT.
+ 3 files changed, 442 insertions(+)
+ create mode 100644 3/(Sub) httpservice/65e836b8-8553-41f1-93dc-92174cef919b/65e836b8-8553-41f1-93dc-92174cef919b.xml
+ create mode 100644 3/(Test) httpservice/fe9fad2b-f91d-4870-9933-0faea5df0359/fe9fad2b-f91d-4870-9933-0faea5df0359.xml
+ create mode 100644 3/httpservice/5b4f5684-8f89-4b02-8b84-6774961049c6/5b4f5684-8f89-4b02-8b84-6774961049c6.xml
+[workspace] $ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=${WORKSPACE}/${BUILD_NUMBER} -Dsonar.host.url=http://18.191.114.169:9000/sonarqube/ ******** "-Dsonar.projectBaseDir=/var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace"
+INFO: Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarQube Scanner 4.2.0.1873
+INFO: Java 1.8.0_222 Private Build (64-bit)
+INFO: Linux 4.9.184-linuxkit amd64
+INFO: User cache: /var/jenkins_home/.sonar/cache
+INFO: SonarQube server 7.1.0
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Publish mode
+INFO: Load global settings
+INFO: Load global settings (done) | time=130ms
+INFO: Server id: AW1CTz46K6Oo3ixBQ-wC
+INFO: User cache: /var/jenkins_home/.sonar/cache
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=78ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=12ms
+INFO: Process project properties
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=106ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=53ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=1423ms
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=98ms
+INFO: Project key: boomi
+INFO: Project base dir: /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace
+INFO: -------------  Scan boomi
+INFO: Load server rules
+INFO: Load server rules (done) | time=798ms
+INFO: Base dir: /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace
+INFO: Working dir: /var/jenkins_home/jobs/Account_Boomi_AjayNatarajan/jobs/Deploy Local Process_SonarQube_Publish to GIT/workspace/.scannerwork
+INFO: Source paths: 3
+INFO: Source encoding: UTF-8, default locale: en_US
+INFO: Index files
+INFO: 3 files indexed
+INFO: Quality profile for xml: BoomiCodeCheck
+INFO: Sensor SonarJavaXmlFileSensor [java]
+INFO: 3 source files to be analyzed
+INFO: Sensor SonarJavaXmlFileSensor [java] (done) | time=89ms
+INFO: 3/3 source files have been analyzed
+INFO: Sensor XML Sensor [xml]
+INFO: Sensor XML Sensor [xml] (done) | time=351ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=20ms
+INFO: Sensor CPD Block Indexer
+INFO: Sensor CPD Block Indexer (done) | time=0ms
+INFO: SCM provider for this project is: git
+INFO: 3 files to be analyzed
+INFO: 3/3 files analyzed
+INFO: Calculating CPD for 0 files
+INFO: CPD calculation finished
+INFO: Analysis report generated in 62ms, dir size=67 KB
+INFO: Analysis reports compressed in 15ms, zip size=21 KB
+INFO: Analysis report uploaded in 125ms
+INFO: ANALYSIS SUCCESSFUL, you can browse https://demo.boomidevops.com/sonarqube/dashboard/index/boomi
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at https://demo.boomidevops.com/sonarqube/api/ce/task?id=AW69_2n6kx8o8Q9o0Vxr
+INFO: Task total time: 5.171 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 6.374s
+INFO: Final Memory: 12M/161M
+INFO: ------------------------------------------------------------------------
+Has build PENDING with id: AW69_2n6kx8o8Q9o0Vxr - waiting 10000 to execute next check. DEBUG:87
+Status => SUCCESS
+PostBuild-Step: Quality Gates plugin build passed: TRUE
+using credential git_id
+ > git tag -l jenkins-Deploy_Local_Process_SonarQube_Publish_to_GIT-3 # timeout=10
+ > git tag -a -f -m Jenkins Build #3 jenkins-Deploy_Local_Process_SonarQube_Publish_to_GIT-3-SUCCESS # timeout=10
+ > git tag -l 3 # timeout=10
+ > git tag -a -f -m Deploying to 3 to origin from Jenkins 3 # timeout=10
+Pushing tag 3 to repo origin
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials Git username and password
+ > git push https://github.com/integrationguru/Account_Boomi_AjayNatarajan.git 3 -f # timeout=10
+Finished: SUCCESS

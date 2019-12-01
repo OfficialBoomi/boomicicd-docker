@@ -2,7 +2,7 @@
 <com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.9">
   <actions/>
   <description>The Boomi CICD jobs for the above account</description>
-  <displayName>Account ${Rename}</displayName>
+  <displayName>Account {Rename}</displayName>
   <properties>
     <com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQoaBx/LHBvRq0xI50rK2EukF6xAQCvHA88eF9t4PVjHQ=}</secret>
+              <secret>{AQAAABAAAAAQiFkQFlcxOdhe74HKkzqmClFeINl0LwuNecK9i4QkvzM=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAAQIaw9lxa+c5PTo/BC5Opa5k0oc9dJzOa7ueDeCaxPMTg=}</password>
+              <password>{AQAAABAAAAAQhI9I6Nlnx9pTolgqcshvRwaCIfvi+jENn1fRM+fmb8s=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -38,7 +38,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value>boomi_ajaynatarajan-J8WVSQ</value>
+          <value></value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
@@ -107,13 +107,18 @@
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
+          <string>Continuous Deployment Pipeline</string>
           <string>Create Package</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Package and Publish to GIT</string>
           <string>Deploy Local Process and Publish to GIT</string>
+          <string>Deploy Local Process_SonarQube_Publish to GIT</string>
+          <string>Deploy Multiple Processes</string>
           <string>Deploy Package</string>
-          <string>Deploy Process (Legacy Deployment)</string>
+          <string>Execute Process</string>
+          <string>Promote Multiple Processes</string>
           <string>Promote Process</string>
+          <string>Query Execution Record</string>
           <string>Undeploy Package</string>
           <string>Undeploy Process</string>
         </jobNames>
@@ -139,6 +144,8 @@
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
           <string>Change All Listener Status</string>
           <string>Change Listener Status</string>
+          <string>Execute Process</string>
+          <string>Query Execution Record</string>
           <string>Update Process Schedule Status</string>
         </jobNames>
         <jobFilters/>
