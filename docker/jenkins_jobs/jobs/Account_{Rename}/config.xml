@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQiFkQFlcxOdhe74HKkzqmClFeINl0LwuNecK9i4QkvzM=}</secret>
+              <secret>{AQAAABAAAAAQpxH4YxvEbpYq2V2IWxn+h3QdVoQHL7sGzGrWP95rlwU=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAAQhI9I6Nlnx9pTolgqcshvRwaCIfvi+jENn1fRM+fmb8s=}</password>
+              <password>{AQAAABAAAAAQFz1gI3fHRkTaWdB/tRVL3OsbjJcMbclOth8DGH5CHjI=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -107,10 +107,8 @@
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
-          <string>Continuous Deployment Pipeline</string>
-          <string>Create Package</string>
+          <string>Continuous Process Deployment Pipeline</string>
           <string>Create Process Schedule</string>
-          <string>Deploy Local Package and Publish to GIT</string>
           <string>Deploy Local Process and Publish to GIT</string>
           <string>Deploy Local Process_SonarQube_Publish to GIT</string>
           <string>Deploy Multiple Processes</string>
@@ -119,7 +117,6 @@
           <string>Promote Multiple Processes</string>
           <string>Promote Process</string>
           <string>Query Execution Record</string>
-          <string>Undeploy Package</string>
           <string>Undeploy Process</string>
         </jobNames>
         <jobFilters/>
@@ -147,6 +144,38 @@
           <string>Execute Process</string>
           <string>Query Execution Record</string>
           <string>Update Process Schedule Status</string>
+        </jobNames>
+        <jobFilters/>
+        <columns>
+          <hudson.views.StatusColumn/>
+          <hudson.views.WeatherColumn/>
+          <hudson.views.JobColumn/>
+          <hudson.views.LastSuccessColumn/>
+          <hudson.views.LastFailureColumn/>
+          <hudson.views.LastDurationColumn/>
+          <hudson.views.BuildButtonColumn/>
+        </columns>
+        <recurse>false</recurse>
+      </hudson.model.ListView>
+      <hudson.model.ListView>
+        <owner class="com.cloudbees.hudson.plugins.folder.Folder" reference="../../../.."/>
+        <name>Continuous Deployment (Package)</name>
+        <filterExecutors>false</filterExecutors>
+        <filterQueue>false</filterQueue>
+        <properties class="hudson.model.View$PropertyList"/>
+        <jobNames>
+          <comparator class="hudson.util.CaseInsensitiveComparator"/>
+          <string>Continuous Package Deployment Pipeline</string>
+          <string>Create Package</string>
+          <string>Create Packages</string>
+          <string>Create Process Schedule</string>
+          <string>Deploy Local Package_Publish to GIT</string>
+          <string>Deploy Local Package_SonarQube_Publish to GIT</string>
+          <string>Deploy Package</string>
+          <string>Deploy Packages</string>
+          <string>Execute Process</string>
+          <string>Query Execution Record</string>
+          <string>Undeploy Package</string>
         </jobNames>
         <jobFilters/>
         <columns>

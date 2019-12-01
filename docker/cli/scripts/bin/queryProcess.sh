@@ -18,6 +18,6 @@ createJSON
 
 callAPI
 
-export componentId=`jq -r .$id out.json` 
+extract $id componentId
 
 clean

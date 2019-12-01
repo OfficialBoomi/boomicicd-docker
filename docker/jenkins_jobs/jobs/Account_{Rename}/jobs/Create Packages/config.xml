@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Creates a package from a process&#xd;
+  <description>Create packages from multiple processes&#xd;
 If package with the same version exists, a new package is not created. &#xd;
 &#xd;
 </description>
@@ -10,8 +10,8 @@ If package with the same version exists, a new package is not created. &#xd;
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>processName</name>
-          <description>Name of the Process to be Packaged</description>
+          <name>processNames</name>
+          <description>Comma separate list of process</description>
           <defaultValue></defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
@@ -46,9 +46,22 @@ If package with the same version exists, a new package is not created. &#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-source bin/queryProcess.sh processName=&quot;${processName}&quot;
-source bin/createPackagedComponent.sh componentId=${componentId} componentType=&quot;Process&quot; packageVersion=${packageVersion} notes=&quot;${notes}&quot; createdBy=&quot;${createdBy}&quot;
-echo $packageId</command>
+saveNotes=&quot;${notes}&quot;
+saveCreatedBy=&quot;${createdBy}&quot;
+savePackageVersion=&quot;${packageVersion}&quot;
+
+IFS=&apos;,&apos; ;for processName in `echo &quot;${processNames}&quot;`; 
+do 
+	notes=&quot;${saveNotes}&quot;
+    packageVersion=&quot;${savePackageVersion}&quot;
+    createdBy=&quot;${saveCreatedBy}&quot;
+    processName=`echo &quot;${processName}&quot; | xargs`
+    saveProcessName=&quot;${processName}&quot;
+	source bin/queryProcess.sh processName=${processName}
+	source bin/createPackagedComponent.sh componentId=${componentId} componentType=&quot;Process&quot; packageVersion=${packageVersion} notes=&quot;${notes}&quot; createdBy=${createdBy}
+	echo &quot;Created package ${packageId} for process ${saveProcessName}&quot;
+ done   
+    </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
