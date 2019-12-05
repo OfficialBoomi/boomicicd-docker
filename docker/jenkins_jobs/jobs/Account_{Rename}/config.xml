@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQpxH4YxvEbpYq2V2IWxn+h3QdVoQHL7sGzGrWP95rlwU=}</secret>
+              <secret>{AQAAABAAAABA0tEGkEc5bGiS07a5vxRI17sxlczwGadrOV3ryJfogll5foHrnwuHjdS7sGpvUHoREC86mVw25rrTXZSa+XIRa8yXEFhR5K1MPmOAJ3z01bk=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAAQFz1gI3fHRkTaWdB/tRVL3OsbjJcMbclOth8DGH5CHjI=}</password>
+              <password>{AQAAABAAAABA9whamjcol7vun+hbUhp0q0tK4QvcSYsAkN7rQ9JNNkZ4S6sq4AfX4gvj+wa3UgnYrYIaLXMdaKCxLVIHqWCsrSxMgRNnUPtBMHqJq/WUo5s=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -107,7 +107,7 @@
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
-          <string>Continuous Process Deployment Pipeline</string>
+          <string>Continuous Process Deployment Pipeline Sonar and GIT</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Process and Publish to GIT</string>
           <string>Deploy Local Process_SonarQube_Publish to GIT</string>

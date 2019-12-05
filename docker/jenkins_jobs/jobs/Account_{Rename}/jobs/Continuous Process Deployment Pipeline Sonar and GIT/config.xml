@@ -18,18 +18,6 @@ Promotes Process into Next Environment</description>
           <trim>true</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>packageVersion</name>
-          <description>Package Version</description>
-          <defaultValue></defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>createdBy</name>
-          <description>Package author</description>
-          <defaultValue></defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>notes</name>
           <description>Deployment Notes</description>
           <defaultValue>The process is ...</defaultValue>
@@ -54,6 +42,18 @@ Promotes Process into Next Environment</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>SonarEnvironment</name>
+          <description>Environment to run Sonar Tests</description>
+          <defaultValue>#jenkins</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>SonarAtomName</name>
+          <description>Name of the local Sonar Atom</description>
+          <defaultValue>jenkins01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>PromotionEnvironment</name>
           <description>Environment to promote after all tests pass (Stage, Production)</description>
           <defaultValue></defaultValue>
@@ -66,16 +66,22 @@ Promotes Process into Next Environment</description>
           <defaultValue>RUNNING</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAG_NAME</name>
+          <description>Optional TAG_NAME to save in GIT.</description>
+          <defaultValue>Release</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.77">
     <script>node {
     stage(&apos;Deploy to Dev&apos;) {
-         build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy],[$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: &apos;RUNNING&apos;]]
+         build job: &apos;Deploy Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes]]
     }    
     stage(&apos;Deploy Test Process&apos;) {
-        build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy]]            
+        build job: &apos;Deploy Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes]]            
     }
     stage(&apos;Execute Test Process&apos;) {
         build job: &apos;Execute Process&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomType&apos;, value: &apos;*&apos;]]                
@@ -83,8 +89,11 @@ Promotes Process into Next Environment</description>
     stage(&apos;Validate Test Process&apos;) {
         build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: SonarEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
     }  
+    stage(&apos;Code Validation &amp; Checkin&apos;) {
+      build job: &apos;Deploy Local Process_SonarQube_Publish to GIT&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: sonarAtomName],[$class: &apos;StringParameterValue&apos;, name: &apos;TAG_NAME&apos;, value: TAG_NAME]]                
+    }
     stage(&apos;Code Promotion&apos;) {
-         build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
+         build job: &apos;Promote Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;from&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;to&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
     }
     
 }</script>

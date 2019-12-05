@@ -10,17 +10,16 @@ id=result[0].id
 exportVariable=atomId
 
 inputs "$@"
-if [ "$atomType" = "*" ] || [ "$atomStatus" = "*" ]
-then
-        JSON_FILE=json/queryAtomAny.json
-fi
-
 
 if [ "$?" -gt "0" ]
 then
         return 255;
 fi
 
+if [ "$atomType" = "*" ] || [ "$atomStatus" = "*" ]
+then
+        JSON_FILE=json/queryAtomAny.json
+fi
 createJSON
  
 callAPI

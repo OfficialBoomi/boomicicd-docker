@@ -4,8 +4,6 @@
   <description>This pipeline Deploys Multiple Process&#xd;
 Runs Unit Test&#xd;
 Validates Unit Test&#xd;
-Performs Sonar Validation&#xd;
-Checks processes into GIT&#xd;
 Promotes Process into Next Environment</description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -42,18 +40,6 @@ Promotes Process into Next Environment</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>SonarEnvironment</name>
-          <description>Environment to run Sonar Tests</description>
-          <defaultValue>#jenkins</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>SonarAtomName</name>
-          <description>Name of the local Sonar Atom</description>
-          <defaultValue>jenkins01</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>PromotionEnvironment</name>
           <description>Environment to promote after all tests pass (Stage, Production)</description>
           <defaultValue></defaultValue>
@@ -65,12 +51,6 @@ Promotes Process into Next Environment</description>
 </description>
           <defaultValue>RUNNING</defaultValue>
           <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>TAG_NAME</name>
-          <description>Optional TAG_NAME to save in GIT.</description>
-          <defaultValue>Release</defaultValue>
-          <trim>true</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -89,9 +69,6 @@ Promotes Process into Next Environment</description>
     stage(&apos;Validate Test Process&apos;) {
         build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: SonarEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
     }  
-    stage(&apos;Code Validation &amp; Checkin&apos;) {
-      build job: &apos;Deploy Local Process_SonarQube_Publish to GIT&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: sonarAtomName],[$class: &apos;StringParameterValue&apos;, name: &apos;TAG_NAME&apos;, value: TAG_NAME]]                
-    }
     stage(&apos;Code Promotion&apos;) {
          build job: &apos;Promote Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;from&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;to&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
     }
