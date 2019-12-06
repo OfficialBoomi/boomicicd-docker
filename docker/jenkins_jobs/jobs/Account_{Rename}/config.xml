@@ -1,5 +1,5 @@
 <?xml version='1.1' encoding='UTF-8'?>
-<com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.9">
+<com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.10.0">
   <actions/>
   <description>The Boomi CICD jobs for the above account</description>
   <displayName>Account {Rename}</displayName>
@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAABA0tEGkEc5bGiS07a5vxRI17sxlczwGadrOV3ryJfogll5foHrnwuHjdS7sGpvUHoREC86mVw25rrTXZSa+XIRa8yXEFhR5K1MPmOAJ3z01bk=}</secret>
+              <secret>{AQAAABAAAACA5kWl7BKSNrGdNiIOgKWT2dLxdWnNlNY0/7cV4yglymFy4BTmNoKM9OxKfzXY93zXcFduKNyA+CHmfVX+6wd1LZmr4uMwoZaS8tyHYIi9tV6dYLhnpYa8WhUchA58H8OFjJjxdRhGUhYyae3dAejAQlE5wsOX/Kwt0V7sSSlUVofXP5Nw9G8AMEt9AKxxZGlP}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAABA9whamjcol7vun+hbUhp0q0tK4QvcSYsAkN7rQ9JNNkZ4S6sq4AfX4gvj+wa3UgnYrYIaLXMdaKCxLVIHqWCsrSxMgRNnUPtBMHqJq/WUo5s=}</password>
+              <password>{AQAAABAAAACA60lOmmaaoKqRiZ3c9nqvPmTrDNP97R0Bjlwp8KNmj1XdHHcUsX2MG4ec9oJuT1gaZH7fC1w1fQxL3OubTGm49sLm+N/UxG4m5Jw3r+cAYzyfdDUmvkCEh4Jg5WcYr0WAxHjgTo/J6OkhVlIQew/P6imZYxI45Lge/3M1RNZXPUf+FnYN4cAQEOScA9VDZEE4}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -54,7 +54,7 @@
         </com.mig82.folders.properties.StringProperty>
       </properties>
     </com.mig82.folders.properties.FolderProperties>
-    <org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig plugin="pipeline-model-definition@1.4.0">
+    <org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig plugin="pipeline-model-definition@1.5.0">
       <dockerLabel></dockerLabel>
       <registry plugin="docker-commons@1.15"/>
     </org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig>
@@ -107,10 +107,8 @@
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
-          <string>Continuous Process Deployment Pipeline Sonar and GIT</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Process and Publish to GIT</string>
-          <string>Deploy Local Process_SonarQube_Publish to GIT</string>
           <string>Deploy Multiple Processes</string>
           <string>Deploy Package</string>
           <string>Execute Process</string>
@@ -170,7 +168,6 @@
           <string>Create Packages</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Package_Publish to GIT</string>
-          <string>Deploy Local Package_SonarQube_Publish to GIT</string>
           <string>Deploy Package</string>
           <string>Deploy Packages</string>
           <string>Execute Process</string>
