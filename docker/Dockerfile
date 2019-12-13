@@ -51,7 +51,7 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && chmod +x /sbin/tini
 
 # jenkins version being bundled in this docker image
-ARG JENKINS_VERSION
+ARG JENKINS_VERSION=2.190.3
 ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # jenkins.war checksum, download will be validated using it
@@ -72,6 +72,9 @@ ENV JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
 ENV JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
 ENV JENKINS_CLI=${JENKINS_HOME}/war/WEB-INF/jenkins-cli.jar
 ENV JENKINS_URL="http://localhost:8080"
+RUN mkdir -p ${REF}/cli \	
+  && curl -fsSL https://platform.boomi.com/atom/atom_install64.sh -o ${REF}/cli/atom_install64.sh \
+	&& chmod +x "${REF}/cli/atom_install64.sh"
 RUN chown -R ${user}:${group} "$JENKINS_HOME" "$REF" 
 
 # for main web interface:

@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAACA5kWl7BKSNrGdNiIOgKWT2dLxdWnNlNY0/7cV4yglymFy4BTmNoKM9OxKfzXY93zXcFduKNyA+CHmfVX+6wd1LZmr4uMwoZaS8tyHYIi9tV6dYLhnpYa8WhUchA58H8OFjJjxdRhGUhYyae3dAejAQlE5wsOX/Kwt0V7sSSlUVofXP5Nw9G8AMEt9AKxxZGlP}</secret>
+              <secret>{AQAAABAAAAAQuHfj/a2WDovJFRtvOeSWoOs95GzJQxPDWMGTKkyAKFE=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAACA60lOmmaaoKqRiZ3c9nqvPmTrDNP97R0Bjlwp8KNmj1XdHHcUsX2MG4ec9oJuT1gaZH7fC1w1fQxL3OubTGm49sLm+N/UxG4m5Jw3r+cAYzyfdDUmvkCEh4Jg5WcYr0WAxHjgTo/J6OkhVlIQew/P6imZYxI45Lge/3M1RNZXPUf+FnYN4cAQEOScA9VDZEE4}</password>
+              <password>{AQAAABAAAADQzEQwiAl1kAG+zu5ih9JtHUV2eeNQBaTdQvzfgR42I82EFImLmk+KlbYoRRnHGlAp52qmR6CrH+weTHGfNjSDnV4nP/n/NTBFrz3Vanad4eVZlyFlso68c5I+efoprY5PZox5yUfe5lSXBZm3y5FhR+5gnJzcY4g6A1cZyjIpOWu39x4ai68tS0paj0eiJVexU7qO9GE7dh0+oWOBSv2QDGUM80opwBgz1KdCIt5x146ehzYPc0BL7kuOI3/Vpz1ArlBmciVitYK7e4VVfZWU+G65yLSl7QViVH8w0LyZNso=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -38,7 +38,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value></value>
+          <value>&lt;&lt;Update the account ID&gt;&gt;</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
@@ -107,6 +107,7 @@
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
+          <string>Continuous Process Deployment Pipeline</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Process and Publish to GIT</string>
           <string>Deploy Multiple Processes</string>
