@@ -32,6 +32,8 @@ INSTALL_DIR=&quot;/var/jenkins_home/boomi&quot;
 ATOM_HOME=${INSTALL_DIR}/Atom_${atomName}
 
 source bin/installerToken.sh atomType=&quot;ATOM&quot;
+
+
 bin/installAtom.sh atomName=&quot;${atomName}&quot; tokenId=${tokenId} INSTALL_DIR=&quot;${INSTALL_DIR}&quot; 
 source bin/createEnvAndAttachRoleAndAtom.sh env=&quot;#jenkins&quot; classification=&quot;TEST&quot; atomName=${atomName} roleName=&quot;Administrator&quot; purgeHistoryDays=&quot;1&quot;
 
@@ -41,10 +43,8 @@ cd ${ATOM_HOME}/bin
 sed -e &apos;s/512/128/g&apos; atom.vmoptions &gt; atom.vmoptions_1
 mv atom.vmoptions_1 atom.vmoptions
 
-
-
-${ATOM_HOME}/bin/atom start
-${ATOM_HOME}/bin/atom status</command>
+bash --rcfile &lt;(nohup ${ATOM_HOME}/bin/atom start  &gt; /dev/null 2&gt;&amp;1 &amp;)
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQuHfj/a2WDovJFRtvOeSWoOs95GzJQxPDWMGTKkyAKFE=}</secret>
+              <secret>{AQAAABAAAAAQitmzdd7oY7E6Tr087I56kGKJdIW5j4jJuHap8bke3OA=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAADQzEQwiAl1kAG+zu5ih9JtHUV2eeNQBaTdQvzfgR42I82EFImLmk+KlbYoRRnHGlAp52qmR6CrH+weTHGfNjSDnV4nP/n/NTBFrz3Vanad4eVZlyFlso68c5I+efoprY5PZox5yUfe5lSXBZm3y5FhR+5gnJzcY4g6A1cZyjIpOWu39x4ai68tS0paj0eiJVexU7qO9GE7dh0+oWOBSv2QDGUM80opwBgz1KdCIt5x146ehzYPc0BL7kuOI3/Vpz1ArlBmciVitYK7e4VVfZWU+G65yLSl7QViVH8w0LyZNso=}</password>
+              <password>{AQAAABAAAAFA6dV89XkLXOfAxKTwHviNDzwi5LI6s+AQb2vAFvhb9XNMsO5KzZ3paDuDMFWP2/up0k4lDyBPovdsLLmJqcqOxea4uieMmgUvNb+3ayrIsQ2xb+eCZBMRhOd4Krjp8ONORpyBAtfDT5fYBu7UA8l3rLmIQGX5HCp17MKLdHy7vAFYcXadrxYzf8rA+JxCIVE9qyymCXMB2iSVAOmB8cUGKTgrBIL0JA+WRQTazr0WVmY/0kcWLIrqRvL7JsZ3GAxWLqyR50CgH46mSrvz+2GRTLnb57IJW96JNtTh1WT290olkDah9paDPn7dBSRp9QGr2EP59ZCNQNd0hWLfGi6Qvd0V1IPKaGEFu9hQf5qSepDmdP4yTfHLb0rXiX0JEzq/q8lkjvqpPeVWsOro2mIXKU7X5Z7aB+0ng0KUxAfNCRnagp5+p0flcBtjqR7LQ1SY}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -38,7 +38,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value>&lt;&lt;Update the account ID&gt;&gt;</value>
+          <value>&lt;&lt;Update your Boomi Account id here&gt;&gt;</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
