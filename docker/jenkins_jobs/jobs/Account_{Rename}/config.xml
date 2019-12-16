@@ -14,13 +14,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.5">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQitmzdd7oY7E6Tr087I56kGKJdIW5j4jJuHap8bke3OA=}</secret>
+              <secret>{AQAAABAAAACANK1Jkb1ftQow2/+PL6IU27e6zOm3d4vTzyKDHjbeLdcz0k7gB0i+YrtIi9lpqbcke4G2nyISMpGbXPAIBUstdva8AazcywoxzvcfM4E2uFXr1J5rnYv4ceY7+jV9DUphxlMlYC8avBDB4n5WCpuRLmkyh0PEbekW/q3NZyhWxVqp3enP20+RsfHmj1FGhvZz}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.0">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAFA6dV89XkLXOfAxKTwHviNDzwi5LI6s+AQb2vAFvhb9XNMsO5KzZ3paDuDMFWP2/up0k4lDyBPovdsLLmJqcqOxea4uieMmgUvNb+3ayrIsQ2xb+eCZBMRhOd4Krjp8ONORpyBAtfDT5fYBu7UA8l3rLmIQGX5HCp17MKLdHy7vAFYcXadrxYzf8rA+JxCIVE9qyymCXMB2iSVAOmB8cUGKTgrBIL0JA+WRQTazr0WVmY/0kcWLIrqRvL7JsZ3GAxWLqyR50CgH46mSrvz+2GRTLnb57IJW96JNtTh1WT290olkDah9paDPn7dBSRp9QGr2EP59ZCNQNd0hWLfGi6Qvd0V1IPKaGEFu9hQf5qSepDmdP4yTfHLb0rXiX0JEzq/q8lkjvqpPeVWsOro2mIXKU7X5Z7aB+0ng0KUxAfNCRnagp5+p0flcBtjqR7LQ1SY}</password>
+              <password>{AQAAABAAAACAbIfqWW3tH7C+E1mwtbB8b+qXA4DZdpC49W1mO2VNDqzdHWc/xUAn0tO3bxq6g6B19ThQGL2S7fZokzm/vXkKrYKO8YwZJoWdVUETJB/+flWFRqhD4Nxrx5mfGpcMxyvDVj734AZhjWYE+AJJYYaN2LtMZfMic3BE9ejpFzmasg7EplF2tcCIF6TYUsMpWNjs}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -38,7 +38,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value>&lt;&lt;Update your Boomi Account id here&gt;&gt;</value>
+          <value>[Update the accountId here]</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
@@ -101,15 +101,17 @@
       </hudson.model.ListView>
       <hudson.model.ListView>
         <owner class="com.cloudbees.hudson.plugins.folder.Folder" reference="../../../.."/>
-        <name>Continuous Deployment</name>
+        <name>Continuous Deployment (Process)</name>
         <filterExecutors>false</filterExecutors>
         <filterQueue>false</filterQueue>
         <properties class="hudson.model.View$PropertyList"/>
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
           <string>Continuous Process Deployment Pipeline</string>
+          <string>Continuous Process Deployment Pipeline Sonar and GIT</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Process and Publish to GIT</string>
+          <string>Deploy Local Process_SonarQube_Publish to GIT</string>
           <string>Deploy Multiple Processes</string>
           <string>Deploy Package</string>
           <string>Execute Process</string>
@@ -165,10 +167,12 @@
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator"/>
           <string>Continuous Package Deployment Pipeline</string>
+          <string>Continuous Package Deployment Pipeline Sonar and GIT</string>
           <string>Create Package</string>
           <string>Create Packages</string>
           <string>Create Process Schedule</string>
           <string>Deploy Local Package_Publish to GIT</string>
+          <string>Deploy Local Package_SonarQube_Publish to GIT</string>
           <string>Deploy Package</string>
           <string>Deploy Packages</string>
           <string>Execute Process</string>
