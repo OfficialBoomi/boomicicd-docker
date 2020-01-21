@@ -24,5 +24,3 @@ fi
 createJSON
 
 callAPI
- 
-clean

@@ -60,7 +60,7 @@ source bin/createCloudAtomAndAttachToEnvWithRole.sh env=${env} classification=${
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-source ./bin/source bin/createCloudAtomAndAttachToEnvWithRole.sh
+source bin/createCloudAtomAndAttachToEnvWithRole.sh
 echo $atomId</command>
     </hudson.tasks.Shell>
   </builders>
