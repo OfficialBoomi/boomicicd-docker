@@ -1,16 +1,21 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job@2.36">
   <actions/>
-  <description>This pipeline Deploys Multiple Process&#xd;
+  <description>This pipeline &#xd;
+Deploys Multiple Process&#xd;
 Runs Unit Test&#xd;
-Validates Unit Test&#xd;
-Performs Sonar Validation&#xd;
-Checks processes into GIT&#xd;
+Validates Unit Test &#xd;
 Promotes Process into Next Environment</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>componentIds</name>
+          <description>List of component Ids to be packaged and deployed if component Ids are null processNames are used instead.</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>processNames</name>
           <description>Comma separated values of process</description>
@@ -24,15 +29,15 @@ Promotes Process into Next Environment</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>createdBy</name>
-          <description>Package author</description>
-          <defaultValue></defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>notes</name>
           <description>Deployment Notes</description>
           <defaultValue>The process is ...</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TestProcessId</name>
+          <description>Id of the TestProcess to be deployed, if id is null TestProcessName is used to create and deploy the package. </description>
+          <defaultValue></defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -69,22 +74,22 @@ Promotes Process into Next Environment</description>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
-  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.77">
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.80">
     <script>node {
     stage(&apos;Deploy to Dev&apos;) {
-         build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy],[$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: &apos;RUNNING&apos;]]
+       build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: componentIds], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: &apos;RUNNING&apos;]]
     }    
     stage(&apos;Deploy Test Process&apos;) {
-        build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy]]            
+        build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: TestProcessId], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion]]            
     }
     stage(&apos;Execute Test Process&apos;) {
         build job: &apos;Execute Process&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomType&apos;, value: &apos;*&apos;]]                
     }
     stage(&apos;Validate Test Process&apos;) {
-        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: SonarEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
+        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
     }  
     stage(&apos;Code Promotion&apos;) {
-         build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;createdBy&apos;, value: createdBy], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
+       build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: componentIds], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
     }
     
 }</script>

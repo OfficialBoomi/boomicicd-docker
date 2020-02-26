@@ -5,7 +5,7 @@ source bin/queryPackagedComponent.sh $@
 
 
 # mandatory arguments
-ARGUMENTS=(componentId componentType packageVersion notes createdBy createdDate)
+ARGUMENTS=(componentId componentType packageVersion notes createdDate)
 createdDate=`date -u +"%Y-%m-%d"T%H:%M:%SZ`
 JSON_FILE=json/createPackagedComponent.json
 URL=$baseURL/PackagedComponent/

@@ -10,6 +10,12 @@ If package with the same version exists, a new package is not created. &#xd;
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
+          <name>componentId</name>
+          <description>If component Id is null processName is used to create package.</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>processName</name>
           <description>Name of the Process to be Packaged</description>
           <defaultValue></defaultValue>
@@ -46,14 +52,18 @@ If package with the same version exists, a new package is not created. &#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-source bin/queryProcess.sh processName=&quot;${processName}&quot;
-source bin/createPackagedComponent.sh componentId=${componentId} componentType=&quot;Process&quot; packageVersion=${packageVersion} notes=&quot;${notes}&quot; createdBy=&quot;${createdBy}&quot;
+saveNotes=&quot;Triggered by jenkins user ${BUILD_USER_ID} ... ${notes}&quot;
+if [ -z &quot;${componentId&quot; ]
+then
+   source bin/queryProcess.sh processName=&quot;$processName&quot;
+fi
+source bin/createPackagedComponent.sh componentId=${componentId} componentType=&quot;Process&quot; packageVersion=${packageVersion} notes=&quot;${saveNotes}&quot; createdBy=&quot;${createdBy}&quot;
 echo $packageId</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.21">
       <bindings>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
@@ -61,6 +71,6 @@ echo $packageId</command>
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.1"/>
   </buildWrappers>
 </project>

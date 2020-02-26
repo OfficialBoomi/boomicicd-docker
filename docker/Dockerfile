@@ -52,11 +52,11 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && chmod +x /sbin/tini
 
 # jenkins version being bundled in this docker image
-ARG JENKINS_VERSION=2.215
+ARG JENKINS_VERSION=2.222
 ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=A55E9A03E04B417AC9735A2DE4D5E186FC0B16F4B5C292EBA6BBED4B48ADD094
+ARG JENKINS_SHA=E2929AEB5DEE6E4EC22D8D51DFB465C186709E07C76DCF781726A98250B814A5
 ENV JENKINS_SHA ${JENKINS_SHA}
 
 # Can be used to customize where jenkins.war get downloaded from
@@ -109,7 +109,6 @@ COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 # Skip initial setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
-# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow email-ext pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle pipeline-model-declarative-agent junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials mailer pipeline-input-step pipeline-graph-analysis durable-task github-branch-source ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project sonar sonar-quality-gates purge-job-history google-login
+RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow email-ext pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle pipeline-model-declarative-agent junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials mailer pipeline-input-step pipeline-graph-analysis durable-task github-branch-source ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project sonar sonar-quality-gates purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin

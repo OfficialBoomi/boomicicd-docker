@@ -13,14 +13,22 @@ function inputs {
               $i)  unset ${KEY}; export eval $KEY="${VALUE}" ;;
               *)
         	esac
-      done
+	      done
+      	for i in "${OPT_ARGUMENTS[@]}"
+      	do
+					# remove all old values of the OPTIONAL ARGUMENTS
+        	case "$KEY" in
+              $i)  unset ${KEY}; export eval $KEY="${VALUE}" ;;
+              *)
+        	esac
+    		done  
  
-   if [ $KEY = "help" ]
-   then
-     usage
-     return 255; 
-   fi
-  done
+   			if [ $KEY = "help" ]
+   				then
+    	 			usage
+     			return 255; 
+   			fi
+   done
  
    # Check inputs
    for i in "${ARGUMENTS[@]}"
@@ -42,6 +50,11 @@ function usage {
     do
      var=$var"${ARGUMENT}=\${$ARGUMENT} "
     done
+		
+    for ARGUMENT in "${OPT_ARGUMENTS[@]}"
+    do
+     var="$var[${ARGUMENT}=\${$ARGUMENT}] "
+    done
    echo "source ${BASH_SOURCE[2]} $var"
 }
  
@@ -52,18 +65,28 @@ function printArgs {
     do
      echo "${ARGUMENT}=${!ARGUMENT}"
     done
+
+    for ARGUMENT in "${OPT_ARGUMENTS[@]}"
+    do
+     echo "(${ARGUMENT}=${!ARGUMENT})"
+    done
 }
 
 
 # Create JSON file with inputs from template
 function createJSON {
 	# Iteratively create a query string to replace the variables in the JSON File
+  if [ null == "${ARGUMENTS}"	] || [ -z "${ARGUMENTS}" ]
+	then 
+		cp $JSON_FILE "${WORKSPACE}"/tmp.json
+  else
  		var="sed "
  		for i in "${ARGUMENTS[@]}"
   		do var=$var" -e \"s/\\\${${i}}/${!i}/\" ";
  		done
- 	var=$var" $JSON_FILE > \"${WORKSPACE}\"/tmp.json"
- 	eval $var
+ 		var=$var" $JSON_FILE > \"${WORKSPACE}\"/tmp.json"
+ 		eval $var
+	fi
 }
 
 # unset all variables and tmp files
@@ -81,6 +104,13 @@ function callAPI {
  
  #echo "curl -s -X POST -u $authToken -H \"${h1}\" -H \"${h2}\" $URL -d@tmp.json > out.json"
  curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d@"${WORKSPACE}"/tmp.json > "${WORKSPACE}"/out.json
+ error=`jq  -r . out.json  |  grep '"@type": "Error"' | wc -l`
+ if [[ $error -gt 0 ]]; then 
+	  export ERROR_MESSAGE=`jq -r .message out.json` 
+		echo $ERROR_MESSAGE  
+	return 251
+ fi
+ 
  if [ ! -z "$exportVariable" ]
  then
   	export ${exportVariable}=`jq -r .$id "${WORKSPACE}"/out.json`

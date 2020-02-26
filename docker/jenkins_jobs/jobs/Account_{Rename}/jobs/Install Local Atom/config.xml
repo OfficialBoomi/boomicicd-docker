@@ -28,13 +28,13 @@ Creates Local Atom with name Jenkins01 and attaches to environment #jenkins&#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-INSTALL_DIR=&quot;/var/jenkins_home/boomi&quot;
-ATOM_HOME=${INSTALL_DIR}/Atom_${atomName}
+export INSTALL_DIR=&quot;/var/jenkins_home/boomi&quot;
+export ATOM_HOME=${INSTALL_DIR}/Atom_${atomName}
 
 source bin/installerToken.sh atomType=&quot;ATOM&quot;
 
 
-bin/installAtom.sh atomName=&quot;${atomName}&quot; tokenId=${tokenId} INSTALL_DIR=&quot;${INSTALL_DIR}&quot; 
+bin/installAtom.sh atomName=&quot;${atomName}&quot; tokenId=${tokenId} INSTALL_DIR=&quot;${INSTALL_DIR}&quot;
 source bin/createEnvAndAttachRoleAndAtom.sh env=&quot;#jenkins&quot; classification=&quot;TEST&quot; atomName=${atomName} roleName=&quot;Administrator&quot; purgeHistoryDays=&quot;1&quot;
 
 ${ATOM_HOME}/bin/atom stop &gt; /dev/null 2&gt;&amp;1 &amp;
@@ -42,14 +42,24 @@ ${ATOM_HOME}/bin/atom stop &gt; /dev/null 2&gt;&amp;1 &amp;
 cd ${ATOM_HOME}/bin
 sed -e &apos;s/512/128/g&apos; atom.vmoptions &gt; atom.vmoptions_1
 mv atom.vmoptions_1 atom.vmoptions
+cd ${ATOM_HOME}/bin
+BUILD_ID=dontKillMe nohup bash ./restart.sh &amp;
 
-bash --rcfile &lt;(nohup ${ATOM_HOME}/bin/atom start  &gt; /dev/null 2&gt;&amp;1 &amp;)
 </command>
     </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command></command>
+    </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.plugins.build__publisher.BuildPublisher plugin="build-publisher@1.22">
+      <publishUnstableBuilds>true</publishUnstableBuilds>
+      <publishFailedBuilds>true</publishFailedBuilds>
+      <postActions class="vector"/>
+    </hudson.plugins.build__publisher.BuildPublisher>
+  </publishers>
   <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.21">
       <bindings>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
@@ -57,6 +67,6 @@ bash --rcfile &lt;(nohup ${ATOM_HOME}/bin/atom start  &gt; /dev/null 2&gt;&amp;1
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.1"/>
   </buildWrappers>
 </project>

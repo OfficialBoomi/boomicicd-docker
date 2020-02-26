@@ -16,6 +16,12 @@ source bin/deployPackage.sh env=${env} processName=${processName} packageVersion
           <trim>true</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>componentId</name>
+          <description>Id of the process to be packaged and deployed if this value is null processName will be used instead.</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>processName</name>
           <description>Name of the Process to be Packaged</description>
           <defaultValue></defaultValue>
@@ -24,12 +30,6 @@ source bin/deployPackage.sh env=${env} processName=${processName} packageVersion
         <hudson.model.StringParameterDefinition>
           <name>packageVersion</name>
           <description>Version of the Package to be created</description>
-          <defaultValue></defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>createdBy</name>
-          <description>Name of the engineer creating the package</description>
           <defaultValue></defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
@@ -45,6 +45,29 @@ source bin/deployPackage.sh env=${env} processName=${processName} packageVersion
           <defaultValue>RUNNING</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.2.2">
+          <name>env2</name>
+          <description></description>
+          <randomName>choice-parameter-20695541155781</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.70">
+              <script>return [&apos;dev&apos;,&apos;uat&apos;,&apos;prd&apos;]</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.70">
+              <script></script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>Deploy Package</projectName>
+          <projectFullName>Account Anji/Deploy Package</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters></referencedParameters>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.CascadeChoiceParameter>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -58,13 +81,14 @@ source bin/deployPackage.sh env=${env} processName=${processName} packageVersion
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-source ./bin/deployPackage.sh
+saveNotes=&quot;Triggered by jenkins user ${BUILD_USER_ID} ... ${notes}&quot;
+source ./bin/deployPackage.sh notes=${saveNotes}
 echo $deploymentId</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.21">
       <bindings>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
@@ -72,6 +96,6 @@ echo $deploymentId</command>
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.1"/>
   </buildWrappers>
 </project>

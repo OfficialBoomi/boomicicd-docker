@@ -1,0 +1,11 @@
+{
+  "QueryFilter" :
+    {
+      "expression" :
+        {
+          "argument" : ["%%%%"],
+          "operator" : "LIKE",
+          "property" : "name"
+        }
+    }
+}

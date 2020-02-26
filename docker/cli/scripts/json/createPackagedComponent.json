@@ -3,6 +3,5 @@
   "packageVersion" : "${packageVersion}",
   "componentType" : "${componentType}",
   "notes" : "${notes}",
-  "createdBy": "${createdBy}",
   "createdDate": "${createdDate}"
 }
