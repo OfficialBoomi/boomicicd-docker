@@ -7,8 +7,13 @@
 		"nestedExpression" : [
 		{
 			"argument" : ["${processName}"],
-			"operator" : "EQUALS",
+			"operator" : "LIKE",
 			"property" : "processName"
+    },
+		{
+			"argument" : ["${processId}"],
+			"operator" : "LIKE",
+			"property" : "processId"
     },
 		{
 			"argument" : ["${atomName}"],

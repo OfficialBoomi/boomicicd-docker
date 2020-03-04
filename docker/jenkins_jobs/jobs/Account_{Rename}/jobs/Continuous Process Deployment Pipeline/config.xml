@@ -55,7 +55,7 @@ Promotes Process into Next Environment</description>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
-  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.78">
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.80">
     <script>node {
     stage(&apos;Deploy to Dev&apos;) {
          build job: &apos;Deploy Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes]]
@@ -67,7 +67,7 @@ Promotes Process into Next Environment</description>
         build job: &apos;Execute Process&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomType&apos;, value: &apos;*&apos;]]                
     }
     stage(&apos;Validate Test Process&apos;) {
-        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName],  [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
+        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;componentId&apos;, value: &apos;%%&apos;], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
     }  
     stage(&apos;Code Promotion&apos;) {
          build job: &apos;Promote Multiple Processes&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;from&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;to&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]

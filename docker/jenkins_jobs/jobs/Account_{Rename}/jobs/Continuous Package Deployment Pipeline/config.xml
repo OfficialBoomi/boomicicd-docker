@@ -71,6 +71,24 @@ Promotes Process into Next Environment</description>
           <defaultValue>RUNNING</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LocalEnvironment</name>
+          <description>Name of the local environment to deploy code for GIT</description>
+          <defaultValue>#jenkins</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LocalAtomName</name>
+          <description>Name of the local atom to extract files for</description>
+          <defaultValue>jenkins01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAG_NAME</name>
+          <description>TAG_NAME to created TAG. If TAG is empty GIT promotion is ignored.</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -83,11 +101,22 @@ Promotes Process into Next Environment</description>
         build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: TestProcessId], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion]]            
     }
     stage(&apos;Execute Test Process&apos;) {
-        build job: &apos;Execute Process&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomType&apos;, value: &apos;*&apos;]]                
+        build job: &apos;Execute Process&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;componentId&apos;, value: TestProcessId], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;atomType&apos;, value: &apos;*&apos;]]                
     }
     stage(&apos;Validate Test Process&apos;) {
-        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
-    }  
+        build job: &apos;Query Execution Record&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;processName&apos;, value: TestProcessName], [$class: &apos;StringParameterValue&apos;, name: &apos;componentId&apos;, value: TestProcessId], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: InitialEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: atomName], [$class: &apos;StringParameterValue&apos;, name: &apos;checkStatus&apos;, value: &apos;true&apos;]]                
+    } 
+    script{
+        if ( !TAG_NAME.isEmpty()) {
+            String deploy=&quot;true&quot;
+                if (InitialEnvironment == LocalEnvironment) {
+                    deploy=&quot;false&quot;
+            }
+            stage (&apos;Publish to GIT &apos;) {
+                 build job: &apos;Publish Packages to GIT&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: componentIds], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: LocalEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;atomName&apos;, value: LocalAtomName], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: &apos;RUNNING&apos;], [$class: &apos;StringParameterValue&apos;, name: &apos;TAG_NAME&apos;, value: TAG_NAME], [$class: &apos;StringParameterValue&apos;, name: &apos;deploy&apos;, value: deploy]]
+            }
+        }
+    }
     stage(&apos;Code Promotion&apos;) {
        build job: &apos;Deploy Packages&apos;, parameters: [[$class: &apos;StringParameterValue&apos;, name: &apos;componentIds&apos;, value: componentIds], [$class: &apos;StringParameterValue&apos;, name: &apos;processNames&apos;, value: processNames], [$class: &apos;StringParameterValue&apos;, name: &apos;env&apos;, value: PromotionEnvironment], [$class: &apos;StringParameterValue&apos;, name: &apos;notes&apos;, value: notes], [$class: &apos;StringParameterValue&apos;, name: &apos;packageVersion&apos;, value: packageVersion], [$class: &apos;StringParameterValue&apos;, name: &apos;listenerStatus&apos;, value: listenerStatus]]
     }

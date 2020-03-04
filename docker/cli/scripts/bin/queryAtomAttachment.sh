@@ -18,5 +18,11 @@ fi
 createJSON
  
 callAPI
- 
+extract result[0].atomId saveAtomId
+extract result[0].environmentId saveEnvId
+
 clean
+
+export atomId=${saveAtomId}
+export envId=${saveEnvId}
+ 

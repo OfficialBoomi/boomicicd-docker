@@ -9,9 +9,15 @@ source bin/queryExecutionRecord.sh from=${from} to=${to} processName=${processNa
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
+          <name>componentId</name>
+          <description></description>
+          <defaultValue>%%</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>processName</name>
           <description>Name of the Process to be Packaged</description>
-          <defaultValue></defaultValue>
+          <defaultValue>%%</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -53,7 +59,7 @@ Accepted values are true / false</description>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
 sleep 15;
-source bin/queryExecutionRecord.sh
+source bin/queryExecutionRecord.sh processId=${componentId}
 checkStatus=`echo &quot;${checkStatus,,}&quot;`
 if [ &quot;$checkStatus&quot; == &quot;true&quot; ]
 then
@@ -66,7 +72,7 @@ fi</command>
   </builders>
   <publishers/>
   <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.21">
       <bindings>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
@@ -74,6 +80,6 @@ fi</command>
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0"/>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.1"/>
   </buildWrappers>
 </project>

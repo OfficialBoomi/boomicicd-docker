@@ -1,9 +1,9 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Deletes Local Atom &#xd;
+  <description>Stops Local Atom &#xd;
 &#xd;
-Deletes Local Atom with name jenkins01 and deletes environment #jenkins&#xd;
+Stops Local Atom &#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -31,9 +31,6 @@ Deletes Local Atom with name jenkins01 and deletes environment #jenkins&#xd;
 INSTALL_DIR=&quot;${LOCAL_ATOM_INSTALL_DIR}&quot;
 ATOM_HOME=${INSTALL_DIR}/Atom_$atomName
 ${ATOM_HOME}/bin/atom stop
-${ATOM_HOME}/uninstall
-source bin/queryEnvironment.sh env=&quot;#jenkins&quot; classification=&quot;TEST&quot; 
-curl -s -X DELETE -u $authToken -H &quot;${h1}&quot; -H &quot;${h2}&quot;  $baseURL/Environment/$envId &gt; out.json
 </command>
     </hudson.tasks.Shell>
   </builders>

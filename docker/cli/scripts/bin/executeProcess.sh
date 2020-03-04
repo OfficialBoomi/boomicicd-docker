@@ -3,7 +3,8 @@
 #!/bin/bash
 source bin/common.sh
 #execute Process by atomId and processId
-ARGUMENTS=(atomName atomType processName)
+ARGUMENTS=(atomName atomType)
+OPT_ARGUMENTS=(componentId processName)
 
 inputs "$@"
 if [ "$?" -gt "0" ]
@@ -13,7 +14,11 @@ fi
 
 source bin/queryAtom.sh atomName="$atomName" atomStatus=online atomType=$atomType
 
-source bin/queryProcess.sh processName="$processName"
+if [ -z "${componentId}" ]
+then
+	source bin/queryProcess.sh processName="$processName"
+fi
+processId=${componentId}
 
 ARGUMENTS=(atomId processId)
 JSON_FILE=json/executeProcess.json

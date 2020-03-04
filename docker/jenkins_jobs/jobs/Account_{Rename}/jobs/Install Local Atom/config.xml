@@ -28,7 +28,7 @@ Creates Local Atom with name Jenkins01 and attaches to environment #jenkins&#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
-export INSTALL_DIR=&quot;/var/jenkins_home/boomi&quot;
+export INSTALL_DIR=&quot;${LOCAL_ATOM_INSTALL_DIR}&quot;
 export ATOM_HOME=${INSTALL_DIR}/Atom_${atomName}
 
 source bin/installerToken.sh atomType=&quot;ATOM&quot;

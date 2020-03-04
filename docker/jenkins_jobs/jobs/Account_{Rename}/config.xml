@@ -13,13 +13,13 @@
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.7">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQRrnsAqDQNlaM8tWYeF7MZafeoeBhgjzOjcEe3b8pevE=}</secret>
+              <secret>{AQAAABAAAAAQFD23DR5+cmx5MKKfyawU833hLlQLDmqgJft5cKSuF94=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
             <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.1">
               <id>git_id</id>
               <description>Git username and password</description>
               <username>user@company.com</username>
-              <password>{AQAAABAAAAFA5hjY3Cmzq6OYx+hGEBwddRdW0Q8rdqsiEHaC6hB39pj2TjAhyQax1H51j+rnxVf+W5YdTn74bQ2zRR1UTpgBuy5ftxA64wYBFtCOf1zvODGaaMFT1mpy1YB+R1K9CfU74PgWJXRvz82mUbNHB2bitgGUda6N6h7zOGA1DRJ/ArvVQXjtWlkqD4ZxHVLaDncmYMA5zD7thMz4He52bLrGZA5n2isaTfByiAHk+eYjRF3cr8CN6S5EbqgvvP9jHLXnuFnWWEaCoAx75Um0ZK0lV8+218tq8bk/cXNf4k4HUd0FYCv7B9LgCmCdJmEjnut5f7vNfnBlt/A0h1h9DUaxLYoK1/XxjskR1HSIXSOd5SEP28+lW96g5WhDPkSKZP19kUyzmNfK5rPfQjxVShnGyMkK3bou6sU5yrHpoFyfYo8/f30SMUadIanxDSQZk36T}</password>
+              <password>{AQAAABAAAAAQCv9YXgaONuVOegfWHQxV4MApSAJVqO9Pqekho8D0ItU=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
@@ -41,7 +41,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value>[Update account id here.]</value>
+          <value>[Update your account Id here]</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
@@ -54,6 +54,10 @@
         <com.mig82.folders.properties.StringProperty>
           <key>SONAR_PROJECT_KEY</key>
           <value>boomi</value>
+        </com.mig82.folders.properties.StringProperty>
+        <com.mig82.folders.properties.StringProperty>
+          <key>LOCAL_ATOM_INSTALL_DIR</key>
+          <value>/var/jenkins_home/boomi</value>
         </com.mig82.folders.properties.StringProperty>
       </properties>
     </com.mig82.folders.properties.FolderProperties>
@@ -148,6 +152,8 @@
           <string>Change Listener Status</string>
           <string>Execute Process</string>
           <string>Query Execution Record</string>
+          <string>Start Local Atom</string>
+          <string>Stop Local Atom</string>
           <string>Update Process Schedule Status</string>
         </jobNames>
         <jobFilters/>
@@ -173,10 +179,10 @@
           <string>Continuous Package Deployment Pipeline</string>
           <string>Create Packages</string>
           <string>Create Process Schedule</string>
-          <string>Deploy Local Package_Publish to GIT</string>
           <string>Deploy Packages</string>
           <string>Execute Process</string>
           <string>List Processes</string>
+          <string>Publish Packages to GIT</string>
           <string>Query Execution Record</string>
           <string>Undeploy Package</string>
         </jobNames>
@@ -201,6 +207,7 @@
         <jobNames>
           <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.model.ListView/jobNames/comparator"/>
           <string>List All Environments</string>
+          <string>List Atoms</string>
           <string>List Deployed Packages</string>
           <string>List Package Components</string>
           <string>List Processes</string>

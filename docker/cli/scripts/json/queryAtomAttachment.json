@@ -7,12 +7,12 @@
           "nestedExpression" : [
             {
               "argument" : ["${atomId}"],
-              "operator" :"EQUALS",
+              "operator" :"LIKE",
               "property" :"atomId"
             },
             {
               "argument" : ["${envId}"],
-              "operator" : "EQUALS",
+              "operator" : "LIKE",
               "property" : "environmentId"
 						}
             ]

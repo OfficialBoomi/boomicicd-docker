@@ -3,7 +3,8 @@
 source bin/common.sh
 # get atom id of the by atom name
 # mandatory arguments
-ARGUMENTS=(from to processName atomName)
+ARGUMENTS=(from to atomName)
+OPT_ARGUMENTS=(processName componentId)
 JSON_FILE=json/queryExecutionRecord.json
 URL=$baseURL/ExecutionRecord/query
 id=result[0].executionId
@@ -20,6 +21,16 @@ then
        from=$lag
 fi
 
+if [ -z "${processName}" ]
+then
+       processName="%%"
+fi
+
+if [ -z "${componentId}" ]
+then
+      componentId="%%"
+fi
+
 inputs "$@"
 
 
@@ -28,6 +39,9 @@ then
         return 255;
 fi
 
+processId=${componentId}
+
+ARGUMENTS=(from to processName atomName processId)
 createJSON
  
 callAPI

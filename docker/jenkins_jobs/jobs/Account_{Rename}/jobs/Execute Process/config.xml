@@ -10,6 +10,12 @@ source bin/executeProcess.sh atomName=${atomName} atomType=${atomType} processNa
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
+          <name>componentId</name>
+          <description>Component Id of to process to execute. If null processName are used instead.</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>processName</name>
           <description>Name of the Process to be deployed</description>
           <defaultValue></defaultValue>
@@ -41,13 +47,13 @@ source bin/executeProcess.sh atomName=${atomName} atomType=${atomType} processNa
     <hudson.tasks.Shell>
       <command>cd ${SCRIPTS_HOME}
 echo Executing process &quot;${processName}&quot;
-source bin/executeProcess.sh processName=&quot;${processName}&quot; atomName=&quot;${atomName}&quot;
+source bin/executeProcess.sh processName=&quot;${processName}&quot; atomName=&quot;${atomName}&quot; componentId=&quot;${componentId}&quot;
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.20">
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.21">
       <bindings>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
@@ -55,35 +61,6 @@ source bin/executeProcess.sh processName=&quot;${processName}&quot; atomName=&qu
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.0">
-      <folderProperties>
-        <properties>
-          <com.mig82.folders.properties.StringProperty>
-            <key>h1</key>
-            <value>Accept: application/json</value>
-          </com.mig82.folders.properties.StringProperty>
-          <com.mig82.folders.properties.StringProperty>
-            <key>h2</key>
-            <value>Content-Type: application/json</value>
-          </com.mig82.folders.properties.StringProperty>
-          <com.mig82.folders.properties.StringProperty>
-            <key>accountId</key>
-            <value></value>
-          </com.mig82.folders.properties.StringProperty>
-          <com.mig82.folders.properties.StringProperty>
-            <key>baseURL</key>
-            <value>https://api.boomi.com/api/rest/v1/$accountId</value>
-          </com.mig82.folders.properties.StringProperty>
-          <com.mig82.folders.properties.StringProperty>
-            <key>SCRIPTS_HOME</key>
-            <value>/var/jenkins_home/cli/scripts</value>
-          </com.mig82.folders.properties.StringProperty>
-          <com.mig82.folders.properties.StringProperty>
-            <key>SONAR_PROJECT_KEY</key>
-            <value>boomi</value>
-          </com.mig82.folders.properties.StringProperty>
-        </properties>
-      </folderProperties>
-    </com.mig82.folders.wrappers.ParentFolderBuildWrapper>
+    <com.mig82.folders.wrappers.ParentFolderBuildWrapper plugin="folder-properties@1.1"/>
   </buildWrappers>
 </project>
