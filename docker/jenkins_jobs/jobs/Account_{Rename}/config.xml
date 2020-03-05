@@ -6,21 +6,26 @@
     <com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
         <entry>
-          <com.cloudbees.plugins.credentials.domains.Domain plugin="credentials@2.3.1">
+          <com.cloudbees.plugins.credentials.domains.Domain plugin="credentials@2.3.3">
             <specifications/>
           </com.cloudbees.plugins.credentials.domains.Domain>
           <java.util.concurrent.CopyOnWriteArrayList>
             <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.7">
               <id>authToken</id>
               <description>Boomi API Authentication Token</description>
-              <secret>{AQAAABAAAAAQFD23DR5+cmx5MKKfyawU833hLlQLDmqgJft5cKSuF94=}</secret>
+              <secret>{AQAAABAAAAAQFmeR/ZF/mdVkdrySKw2sj1MSnkokGSPfsvqf+GBUXc8=}</secret>
             </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
-            <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.1">
+            <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.3.3">
               <id>git_id</id>
               <description>Git username and password</description>
-              <username>user@company.com</username>
-              <password>{AQAAABAAAAAQCv9YXgaONuVOegfWHQxV4MApSAJVqO9Pqekho8D0ItU=}</password>
+              <username>username</username>
+              <password>{AQAAABAAAAAQLJS1uVSO2QS55a7fWH89tFJ5azL/7ne0Y3eRjx+Hy1I=}</password>
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+            <org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl plugin="plain-credentials@1.7">
+              <id>sonarToken</id>
+              <description>Token for Sonar</description>
+              <secret>{AQAAABAAAAAQTPyR2NvdlcGvQeZQ0a1RWAetK+QOTwNj6dutnoITDNk=}</secret>
+            </org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl>
           </java.util.concurrent.CopyOnWriteArrayList>
         </entry>
       </domainCredentialsMap>
@@ -41,7 +46,7 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>accountId</key>
-          <value>[Update your account Id here]</value>
+          <value>[Update the accountId here]</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>baseURL</key>
@@ -53,11 +58,15 @@
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>SONAR_PROJECT_KEY</key>
-          <value>boomi</value>
+          <value>BoomiSonar</value>
         </com.mig82.folders.properties.StringProperty>
         <com.mig82.folders.properties.StringProperty>
           <key>LOCAL_ATOM_INSTALL_DIR</key>
           <value>/var/jenkins_home/boomi</value>
+        </com.mig82.folders.properties.StringProperty>
+        <com.mig82.folders.properties.StringProperty>
+          <key>DEFAULT_GIT_REPO</key>
+          <value>[Update Git User Here]</value>
         </com.mig82.folders.properties.StringProperty>
       </properties>
     </com.mig82.folders.properties.FolderProperties>
@@ -182,6 +191,7 @@
           <string>Deploy Packages</string>
           <string>Execute Process</string>
           <string>List Processes</string>
+          <string>Publish Package to GIT and Sonar</string>
           <string>Publish Packages to GIT</string>
           <string>Query Execution Record</string>
           <string>Undeploy Package</string>

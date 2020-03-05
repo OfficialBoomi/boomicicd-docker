@@ -2,7 +2,7 @@
 <project>
   <actions/>
   <description>Deploys a packages to a local environment&#xd;
-Extracts the component file and publishes it to GIT&#xd;
+Extracts the component file and publishes it to GIT and Runs Sonar Validation&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -63,7 +63,7 @@ Extracts the component file and publishes it to GIT&#xd;
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>${DEFAULT_GIT_REPO}</url>
+        <url>https://github.com/integrationguru/Account_Boomi_AjayNatarajan</url>
         <credentialsId>git_id</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
@@ -165,8 +165,34 @@ git commit -m &quot;Saving ${WORKSPACE}/${BUILD_NUMBER} file to GIT.&quot;
 cd &quot;${LOCAL_ATOM_INSTALL_DIR}&quot;/Atom_${atomName}/bin
 BUILD_ID=dontKillMe nohup bash ./restart.sh &amp;</command>
     </hudson.tasks.Shell>
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.11">
+      <project></project>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <additionalArguments>-Dsonar.projectKey=${SONAR_PROJECT_KEY}   -Dsonar.sources=&quot;${WORKSPACE}/${BUILD_NUMBER}&quot;    -Dsonar.login=${sonarToken}</additionalArguments>
+      <jdk>(Inherit From Job)</jdk>
+      <task></task>
+    </hudson.plugins.sonar.SonarRunnerBuilder>
   </builders>
   <publishers>
+    <org.quality.gates.jenkins.plugin.QGPublisher plugin="sonar-quality-gates@1.3.1">
+      <jobConfigData>
+        <projectKey>${SONAR_PROJECT_KEY}</projectKey>
+        <sonarInstanceName>boomisonar</sonarInstanceName>
+        <buildStatus>FAILED</buildStatus>
+      </jobConfigData>
+      <buildDecision>
+        <qualityGatesProvider>
+          <qualityGateResponseParser/>
+          <sonarHttpRequester class="org.quality.gates.sonar.api61.SonarHttpRequester61">
+            <logged>false</logged>
+          </sonarHttpRequester>
+          <sonarInstanceValidationService/>
+        </qualityGatesProvider>
+      </buildDecision>
+      <jobConfigurationService/>
+      <jobExecutionService/>
+    </org.quality.gates.jenkins.plugin.QGPublisher>
     <hudson.plugins.git.GitPublisher plugin="git@4.2.0">
       <configVersion>2</configVersion>
       <pushMerge>true</pushMerge>
@@ -189,6 +215,10 @@ BUILD_ID=dontKillMe nohup bash ./restart.sh &amp;</command>
         <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
           <credentialsId>authToken</credentialsId>
           <variable>authToken</variable>
+        </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
+        <org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
+          <credentialsId>sonarToken</credentialsId>
+          <variable>sonarToken</variable>
         </org.jenkinsci.plugins.credentialsbinding.impl.StringBinding>
       </bindings>
     </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>

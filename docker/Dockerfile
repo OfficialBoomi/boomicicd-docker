@@ -71,7 +71,7 @@ RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
 ENV JENKINS_UC https://updates.jenkins.io
 ENV JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
 ENV JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
-ENV JENKINS_CLI=${JENKINS_HOME}/war/WEB-INF/jenkins-cli.jar
+ENV JENKINS_CLI=${JENKINS_HOME}/jenkins-cli.jar
 ENV JENKINS_URL="http://localhost:8080"
 RUN mkdir -p ${REF}/cli \	
   && curl -fsSL https://platform.boomi.com/atom/atom_install64.sh -o ${REF}/cli/atom_install64.sh \
@@ -95,7 +95,8 @@ COPY hudson.tasks.Shell.xml ${JENKINS_HOME}/hudson.tasks.Shell.xml
 COPY jenkins-support /usr/local/bin/jenkins-support
 COPY jenkins.sh /usr/local/bin/jenkins.sh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY restart.sh /usr/local/bin/restart.sh
+COPY restart.sh ${REF}/restart/sh
+COPY updateexecutors.sh ${REF}/updateexecutors.sh
 COPY tini-shim.sh /bin/tini
 COPY hudson.plugins.git.GitSCM.xml_1 ${JENKINS_HOME}/hudson.plugins.git.GitSCM.xml_1
 
