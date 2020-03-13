@@ -95,7 +95,7 @@ function clean {
 		do
 			unset $i
 	  done
-	 unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable
+	 unset JSON_FILE ARGUMENTS id URL var ARGUMENT i exportVariable reportHeaders reportTitle
 	 #rm -f "${WORKSPACE}"/*.json
 }
 
@@ -103,21 +103,86 @@ function clean {
 function callAPI {
  
  #echo "curl -s -X POST -u $authToken -H \"${h1}\" -H \"${h2}\" $URL -d@tmp.json > out.json"
- curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d@"${WORKSPACE}"/tmp.json > "${WORKSPACE}"/out.json
- error=`jq  -r . out.json  |  grep '"@type": "Error"' | wc -l`
- if [[ $error -gt 0 ]]; then 
+ if [[ $URL != *queryMore* ]]
+  then
+  curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d@"${WORKSPACE}"/tmp.json > "${WORKSPACE}"/out.json
+  error=`jq  -r . out.json  |  grep '"@type": "Error"' | wc -l`
+  if [[ $error -gt 0 ]]; then 
 	  export ERROR_MESSAGE=`jq -r .message out.json` 
 		echo $ERROR_MESSAGE  
-	return 251
- fi
+	 return 251
+  fi
  
- if [ ! -z "$exportVariable" ]
- then
+  if [ ! -z "$exportVariable" ]
+  then
   	export ${exportVariable}=`jq -r .$id "${WORKSPACE}"/out.json`
+  fi
+  else
+  curl -s -X POST -u $authToken -H "${h1}" -H "${h2}" $URL -d${queryToken} > "${WORKSPACE}"/out.json
  fi
+
 }
 
 
 function extract {
   	export ${2}="`jq -r .${1} "${WORKSPACE}"/out.json`"
+}
+
+function extractMap {
+ mapfile -t ${2} < <(jq -r .result[].${1} "${WORKSPACE}/out.json")
+}
+
+function printReportHead {
+	printf "%s\n" "<html>"
+	printf "%s\n" "<head>"
+	printf "%s\n" "<style>"
+  printf "%s\n" "table {"
+  printf "\t%s\n" "font-family: arial, sans-serif;"
+  printf "\t%s\n" "border-collapse: collapse;"
+  printf "\t%s\n" "width: 100%;"
+  printf "%s\n" "}"
+
+  printf "%s\n" "td, th {"
+  printf "\t%s\n" "border: 1px solid #dddddd;"
+  printf "\t%s\n" "text-align: left;"
+  printf "\t%s\n" "padding: 8px;"
+  printf "%s\n" "}"
+
+  printf "%s\n" "tr:nth-child(even) {"
+  printf "\t%s\n" "background-color: #dddddd;"
+  printf "%s\n" "}"
+  printf "%s\n" "</style>"
+  printf "%s\n" "</head>"
+  printf "%s\n" "<body>"
+ 
+  printf "%s\n" "<h2>${REPORT_TITLE}</h2>"
+ 
+  printf "%s\n" "<table>"
+  printf "%s\n" "<tr>"	
+  for i in "${REPORT_HEADERS[@]}"
+   do
+			printf "%s\n" "<th>${i}</th>"
+	 done	
+	printf "%s\n\n" "</tr>"
+}
+
+function printReportTail {
+	printf "\n\n%s\n" "</table>"
+  printf "%s\n" "</body>"
+  printf "%s\n" "</html>"
+}
+
+function printReportRow {
+	printFormat="%s\\n"
+	printText="<tr>"
+  l=0
+	for FIELD in "$@"
+	do		
+	 printFormat="${printFormat}%s"
+	 printText="${printText} <th>${FIELD}</th>"
+	 l=$(( $l + 1));
+	done	
+	printFormat="${printFormat}%s"
+	printText="${printText} </tr>"
+	printf "${printFormat} ${printText}"
 }
