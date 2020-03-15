@@ -1,6 +1,0 @@
-{
-  "processId" : "${processId}",
-  "atomId" : "${atomId}",
-  "id" : "${scheduleId}",
-  "enabled" : "${status}" 
-}

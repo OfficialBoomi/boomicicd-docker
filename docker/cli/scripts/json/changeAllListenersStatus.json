@@ -1,6 +1,0 @@
-{
-
-  "containerId" : "${atomId}",
-  "action" : "${action}"
-}
-

@@ -1,7 +1,0 @@
-{
-  "atomId" : "${atomId}",
-  "url" : "${url}",
-	"apiType" : "${apiType}",
-	"overrideUrl" : "${overrideUrl}",
-  "minAuth" : "${auth}"
-}
