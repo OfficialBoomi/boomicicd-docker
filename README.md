@@ -1,2 +1,27 @@
-# boomicicd
-Git repo for boomi cicd jenkins docker
+# Docker image of Boomi CI/CD reference implemetation of Jenkins
+This repository builds a jenkins:lts image with required Jenkins Jobs and CLI scripts to implement Boomi CI/CD. 
+
+## Pre-requistes
+Must have docker installed to build the image. 
+Create a folder named boomicicd
+
+```
+$ BOOMICICD_HOME=/path/to/boomicicd
+$ cd ${BOOMICICD_HOME}
+$ git clone https://github.com/integrationguru/boomicicd-cli
+$ git clone https://github.com/integrationguru/boomicicd-jenkinsjobs
+$ git clone https://github.com/integrationguru/boomicicd-docker
+```
+
+  
+## Build
+
+```
+$ cd ${BOOMICICD_HOME}/boomicid-docker/docker
+$ name="image_name"
+$ tag="1.0"
+$ ./build.sh $name $tag
+```
+
+## Run and configure
+  To run and configure boomicicd jenkins goto https://hub.docker.com/repository/docker/boomicicd/jenkins
