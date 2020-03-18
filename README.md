@@ -1,4 +1,4 @@
-# Docker image of Boomi CI/CD reference implemetation of Jenkins
+# Jenkins Docker image of a Boomi CI/CD reference implemetation
 This repository builds a jenkins:lts image with required Jenkins Jobs and CLI scripts to implement Boomi CI/CD. 
 
 ## Pre-requistes
@@ -25,3 +25,6 @@ $ ./build.sh $name $tag
 
 ## Run and configure
   To run and configure boomicicd jenkins goto https://hub.docker.com/repository/docker/boomicicd/jenkins
+
+# Support
+This image is not supported at this time. Please leave your comments at https://community.boomi.com/s/group/0F91W0000008r5WSAQ/devops-boomi
