@@ -8,9 +8,9 @@ Create a folder named boomicicd
 ```
 $ BOOMICICD_HOME=/path/to/boomicicd
 $ cd ${BOOMICICD_HOME}
-$ git clone https://github.com/integrationguru/boomicicd-cli
-$ git clone https://github.com/integrationguru/boomicicd-jenkinsjobs
-$ git clone https://github.com/integrationguru/boomicicd-docker
+$ git clone https://github.com/OfficialBoomi/boomicicd-cli
+$ git clone https://github.com/OfficialBoomi/boomicicd-jenkinsjobs
+$ git clone https://github.com/OfficialBoomi/boomicicd-docker
 ```
 
   
