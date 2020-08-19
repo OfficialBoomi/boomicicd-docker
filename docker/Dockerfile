@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 #RUN echo "" > /etc/apt/sources.list.d/jessie-backports.list
 #RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
 
-RUN apt-get update -y && apt-get install -y git curl jq openjdk-8-jdk tidy unzip libxml2-utils && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y git curl jq openjdk-8-jdk tidy unzip libxml2-utils awscli && rm -rf /var/lib/apt/lists/*
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
@@ -50,11 +50,11 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && chmod +x /sbin/tini
 
 # jenkins version being bundled in this docker image
-ARG JENKINS_VERSION=2.252
+ARG JENKINS_VERSION=2.253
 ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=00A1B953586523D71496B468478EAE0BC69D34B4FF71B3507065DB6C9D49EDAC
+ARG JENKINS_SHA=D99C51292349AF4934AB9769BA9EF2ED9AB9A8B118FF601AAABF1D5BF2A4E6A1
 ENV JENKINS_SHA ${JENKINS_SHA}
 
 # Can be used to customize where jenkins.war get downloaded from
@@ -64,6 +64,12 @@ ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-w
 # see https://github.com/docker/docker/issues/8331
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
   && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha256sum -c -
+
+# install awscli2
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+	&& unzip awscliv2.zip \
+  && ./aws/install
+
 
 
 ENV JENKINS_UC https://updates.jenkins.io
@@ -112,4 +118,4 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow email-ext pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials mailer pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin
+RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow email-ext pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials mailer pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin secure-requester-whitelist
