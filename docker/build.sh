@@ -14,6 +14,7 @@ then
   echo "No tag for the image"
   return 255
 fi
+rm -rf jenkins_jobs cli sonarqube
 
 curdir=`pwd`
 cp -R ../../boomicicd-jenkinsjobs/jenkins_jobs jenkins_jobs
