@@ -49,10 +49,10 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.259}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.264}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=7DE54585946C4055E6CDB54E3FD403A86422DE580E92064613424700CD9F8401
+ARG JENKINS_SHA=91688E75025A999AF2B91BCC3C5A1C8376214D26A1E7F63FA9E822D2EA0C9011
 ENV JENKINS_SHA ${JENKINS_SHA}
 
 # Can be used to customize where jenkins.war get downloaded from
@@ -113,4 +113,4 @@ COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin secure-requester-whitelist
+RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin secure-requester-whitelist postbuildscript
