@@ -26,7 +26,7 @@ mkdir -p sonarqube
 unzip -q ../../boomicicd-cli/sonarqube/sonar*.zip -d sonarqube
 chmod u+x sonarqube/sonar*/bin/*
 cp -R ../../boomicicd-cli/cli cli
-rm -f cli/scripts/*.json
+rm -f cli/scripts/*.json cli/scripts/*.html cli/scripts/*.xml
 docker build -t ${name}:${tag} .
 rm -rf cli
 rm -rf jenkins_jobs

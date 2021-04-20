@@ -3,9 +3,12 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install git lfs on Debian stretch per https://github.com/git-lfs/git-lfs/wiki/Installation#debian-and-ubuntu
 # Avoid JENKINS-59569 - git LFS 2.7.1 fails clone with reference repository
-RUN apt-get update -y && apt-get install -y git curl jq  tidy unzip libxml2-utils awscli \
+RUN apt-get update -y && apt-get install -y git curl jq tidy unzip libxml2-utils \
     && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && git lfs install \
     && rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
+	&& unzip awscliv2.zip \
+	&& ./aws/install \
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
@@ -49,10 +52,10 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.280}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.288}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=01A2934387297AF601B29657E4BEFA7C0964334DC772AF8B3B47E19E3705D45C
+ARG JENKINS_SHA=1DA9936168A6FE1B8C5C707CDECB6DBACAE2811E3A62D0FB5B01A33D114C22E6
 ENV JENKINS_SHA ${JENKINS_SHA}
 
 # Can be used to customize where jenkins.war get downloaded from
