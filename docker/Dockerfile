@@ -1,14 +1,15 @@
-FROM openjdk:8-jdk-stretch
+FROM openjdk:11-jdk-stretch
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install git lfs on Debian stretch per https://github.com/git-lfs/git-lfs/wiki/Installation#debian-and-ubuntu
 # Avoid JENKINS-59569 - git LFS 2.7.1 fails clone with reference repository
-RUN apt-get update -y && apt-get install -y git curl jq tidy unzip libxml2-utils \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y git curl jq  tidy unzip libxml2-utils \
     && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && git lfs install \
-    && rm -rf /var/lib/apt/lists/*
-RUN curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
-	&& unzip awscliv2.zip \
-	&& ./aws/install \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
+    && unzip awscliv2.zip \
+    && ./aws/install
+  
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
@@ -52,10 +53,9 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.288}
-
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=1DA9936168A6FE1B8C5C707CDECB6DBACAE2811E3A62D0FB5B01A33D114C22E6
+ARG JENKINS_SHA=9663A14158588EB470A024AD941F6780945C6383B5A82DDA4EF2D15DAC4F7214
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.299}
 ENV JENKINS_SHA ${JENKINS_SHA}
 
 # Can be used to customize where jenkins.war get downloaded from
@@ -116,4 +116,4 @@ COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin secure-requester-whitelist
+RUN /usr/local/bin/install-plugins.sh pipeline-model-extensions build-timeout pipeline-milestone-step github-api workflow-job docker-workflow pipeline-stage-view workflow-multibranch apache-httpcomponents-client-4-api pipeline-model-api git-server resource-disposer jquery-detached workflow-scm-step credentials-binding ant momentjs pipeline-rest-api display-url-api gradle junit structs command-launcher trilead-api token-macro github cloudbees-folder ace-editor plain-credentials workflow-aggregator pipeline-model-definition credentials branch-api script-security workflow-step-api timestamper folder-properties git-client pipeline-github-lib mapdb-api workflow-cps pipeline-stage-tags-metadata bouncycastle-api pipeline-build-step antisamy-markup-formatter jsch pam-auth handlebars workflow-api authentication-tokens pipeline-stage-step lockable-resources workflow-cps-global-lib subversion matrix-project git jdk-tool ws-cleanup workflow-support jackson2-api ssh-credentials pipeline-input-step pipeline-graph-analysis durable-task ldap docker-commons ssh-slaves workflow-durable-task-step scm-api matrix-auth workflow-basic-steps authorize-project purge-job-history google-login uno-choice build-publisher htmlpublisher build-user-vars-plugin secure-requester-whitelist postbuildscript
