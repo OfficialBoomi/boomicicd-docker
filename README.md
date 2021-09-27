@@ -18,9 +18,10 @@ $ git clone https://github.com/OfficialBoomi/boomicicd-docker
 
 ```
 $ cd ${BOOMICICD_HOME}/boomicid-docker/docker
-$ name="image_name"
+$ name="image_name" # E.g. boomicicd/jenkins 
 $ tag="1.0"
 $ ./build.sh $name $tag
+$ docker tag $name:$tag $name:latest
 ```
 
 ## Run and configure
